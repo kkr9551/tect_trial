@@ -1,0 +1,17 @@
+.help {
+    padding: 0.5rem 1rem;
+    transform: all 0.3s ease-in;
+    z-index: 2222222222;
+}
+
+.help_item {
+    text-decoration: none;
+    color: white;
+    list-style: none;
+}
+
+.help:hover {
+    background-color: var(--icons-color);
+    color: var(--shadow-dark-color);
+    border-radius: 0.3rem;
+}

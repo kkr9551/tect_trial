@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.matching_game {
+    max-width: 860px;
+}
+
+.matching_game-title {
+    position: relative;
+    top: 70px;
+    left: 140px
+}
+
+.matching_game-title p {
+    padding-left: 20px;
+    font-size: 18px;
+    position: relative;
+    left: 150px;
+}
+
+.matching_game-title h1 {
+    position: relative;
+    left: 20px;
+}
+
+.shuffle_btn {
+    background: none;
+    border: 2px solid #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1em;
+    position: relative;
+    top: 70px;
+    left: 360px;
+    width: 100px;
+    height: 45px;
+}
+
+.shuffle_btn:hover {
+    background: #c23866;
+    color: #fff;
+}
+
+.card-grid {
+    margin-top: 10px;
+    width: 600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 5px;
+    position: relative;
+    top: 80px;
+    left: 120px
+}
+
+.card .back {
+    transition: all ease-in 0.2s;
+    transition-delay: 0.2s;
+}
+
+.flipped .back {
+    transform: rotateY(90deg);
+    transition-delay: 0s;
+}
+
+.displayTurns {
+    margin-top: 2px;
+    position: relative;
+    top: 90px;
+    left: 382px
+}
+
+.story_board {
+    margin-top: 180px;
+    position: relative;
+    right: 180px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.container_d {
+    background-color: #EFE6E6;
+    width: 800px;
+    height: 400px;
+    color: #1b1523;
+    position: absolute;
+    
+}
+
+.container_d button {
+    color: black;
+    background-color: none;
+    border-color: black;
+}
+
+.container_d p {
+    padding: 5px 5px 10px 10px;
+    font-size: 20px;
+}

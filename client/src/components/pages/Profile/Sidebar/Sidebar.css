@@ -1,0 +1,48 @@
+.layout {
+    display: flex;
+}
+
+.main {
+    width: 100%;
+    color: #fff;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 230px;
+    height: 100vh;
+    flex-shrink: 0;
+    background-color: white;
+    overflow: auto;
+    color: dark;
+    transition: all 0.5s;
+}
+
+.top_section {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    transition: all 0.5s;
+    background-color: darkblue;
+    height: 70px;
+}
+
+.bars {
+    display: flex;
+    font-size: 25px;
+    margin-left: 70px;
+    cursor: pointer;
+    color: white;
+    transition: all 0.3s;
+}
+
+.bars:hover {
+    color: #2D2929;
+    font-size: 27px;
+}
+
+.sublink .sidebar-item .sidebar-title {
+    padding-left: 40px;
+}

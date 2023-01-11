@@ -1,0 +1,77 @@
+.F {
+    width: 900px;
+    height: 250px;
+}
+
+.formTitle {
+    position: relative;
+    left: 200px;
+}
+.formTitle h1 {
+    font-size: 30px;
+    color: #EFE6E6;
+    margin-bottom: 30p;
+    font-weight: bold;
+    position: relative;
+    left: 0px;
+}
+
+.formTitle h2 {
+    color: #ddd;
+}
+
+.postForm form {
+    display: 'flex';
+    justify-content: 'center';
+    background-color: #EFE6E6;
+    padding: 2rem; 
+    width: 1000px;
+    height: 300px;
+    width: full-width;
+    color: black;
+    position: relative;
+    top: 20px
+}
+
+.textarea-label {
+    position: relative;
+    top: 0.25rem;
+}
+
+.postForm textarea {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display: block;
+}
+
+.submit-btn {
+    background-color: #092E75;
+    color: white;
+    border: 2px solid #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 75px;
+    height: 43px;
+    position: relative;
+    top: 20px;
+}
+
+.clear-btn {
+    background-color: #f30808;
+    color: white;
+    border: 2px solid #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 75px;
+    height: 43px;
+    position: relative;
+    top: 20px;
+    left: 10px;
+}
