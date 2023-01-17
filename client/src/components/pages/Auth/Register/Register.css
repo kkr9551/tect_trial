@@ -1,0 +1,134 @@
+.registerContainer {
+    width: 850px;
+    height: 650px;
+    position: absolute;
+    left: 220px;
+    top: 180px;
+    background-color: none;
+    border-radius: 5%;
+}
+
+h1 {
+    position: relative;
+    left: 220px;
+    right: 120px;
+}
+
+form {
+    width: 700px;
+    height: 500px;
+    background-color: white;
+    position: relative;
+    left: 180px;
+    display: flex;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.form-box {
+    background-color: none;
+    width: 600px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    top: 20px;
+    display: 'flex';
+    justify-content: 'center';
+    align-items: center;
+}
+
+.input-group {
+    flex-direction: column;
+    display: flex;
+    gap: 0.5rem;
+    left: 140px;
+    position: relative;
+    left: 50px;
+}
+
+.input-group label {
+    text-align: left;
+    display: block;
+    margin-top: 0.3rem;
+    color: #2D2929;
+}
+
+input {
+    padding: 0.5rem;
+    border: 1px solid #2D2929;
+    font-size: 1rem;
+    color: #2D2929;
+    width: 100%;
+    border-radius: 3px;
+}
+
+input:hover {
+    border: 1px solid #092E75
+}
+
+.form-box label, input {
+    font-size: 12px;
+    position: relative;
+    top: 0.25rem;
+}
+
+
+.btns {
+    width: 400px;
+    height: 60px;
+    background-color: none;
+    position: relative;
+    top: 70px;
+    left: 200px;
+}
+
+button {
+    background-color: #092E75;
+    border: 2px solid #2D2929;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 285px;
+    height: 45px;
+    position: relative;
+    color: #EFE6E6;
+    font-weight: bold;
+    font-size: 1rem;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+button:hover {
+    border: 2px solid #2D2929;
+    background-color: green;
+}
+
+.links {
+    display: flex;
+    position: relative;
+    top: 60px;
+    justify-content: center;
+    align-items: center;
+}
+
+.links .changeform {
+    color: #2D2929;
+    width: 200px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.linkTL {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2D2929
+}
+
+.linkTL:hover {
+    color: red;
+}
+
+
+
+
+
+

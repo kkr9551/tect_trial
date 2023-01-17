@@ -2,13 +2,18 @@ import React from 'react';
 import { CgDisplayGrid } from "react-icons/cg";
 import { RiAccountCircleLine } from "react-icons/ri";
 import { GoIssueReopened } from 'react-icons/go';
-import { MdOutlineSecurity } from 'react-icons/md';
+import { MdAddToPhotos } from 'react-icons/md';
 
 const Menu = [
     {
         title: 'My detection',
         icon: <CgDisplayGrid />,
-        path: "/myposts"
+        path: "/dashboard"
+    },
+    {
+        title: "Add evidence",
+        icon: <MdAddToPhotos />,
+        path: "/add-evidence",
     },
     {
         title: 'My account',
@@ -30,11 +35,6 @@ const Menu = [
         icon: <GoIssueReopened />,
         path: "/contact",
     },
-    {
-        title: 'Security',
-        icon: <MdOutlineSecurity />,
-        path: "/reset",
-    }
 ];
 
 export default Menu;

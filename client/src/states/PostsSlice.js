@@ -1,60 +1,27 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-
-const url = 'http://localhost:5000/posts';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import postsService from '../services/postsService';
+import { toast } from 'react-toastify';
 
 const initialState = {
-    posts: [],
     post: null,
-    status: "idle",
-    error: null,
-};
+    posts: [],
+    isError: false,
+    isSuccess: false,
+    isLoading: false,
+    message: "",
+}
 
-/**create a post */
-export const createPost = createAsyncThunk(
-    "post/CREATE",
-    async (newPost, thunkAPI) => {
+/**creat a new post */
+const createPost = createAsyncThunk(
+    "posts/create",
+    async (formData, thunkAPI) => {
         try {
-            const response = await axios.post(url, newPost);
-            return response.data;
+            return await postsService.createPost(formData);
         } catch (error) {
-            const message = (
-                error.response && error.response.data && error.response.data.message
-            ) || error.message || error.toString();
-            console.log(message);
-            return thunkAPI.rejectWithValue(message)
-        }
-    }
-);
-
-/**get all posts */
-export const getPosts = createAsyncThunk(
-    "posts/FETCH_ALL",
-    async (_, thunkAPI) => {
-        try {
-            const response = await axios.get(url);
-            return response.data;
-        } catch (error) {
-            const message = (
-                error.response && error.response.data && error.response.data.message
-            ) || error.message || error.toString();
-            console.log(message);
-            return thunkAPI.rejectWithValue(message);
-        }
-    }
-);
-
-/**get a post by id */
-export const getPost = createAsyncThunk(
-    "posts/getPost",
-    async (id, thunkAPI) => {
-        try {
-            const response = await axios.get(url, id);
-            return response.data;
-        } catch (error) {
-            const message = (
-                error.response && error.response.data && error.response.data.message
-            ) || error.message || error.toString();
+            const message = 
+                (error.response && error.response.data && error.response.data.message) ||
+                error.message ||
+                error.toString();
             console.log(message);
             return thunkAPI.rejectWithValue(message);
         }
@@ -62,53 +29,31 @@ export const getPost = createAsyncThunk(
 );
 
 const postsSlice = createSlice({
-    name: "posts",
+    name: "post",
     initialState,
-    reducers: {},
+    reducers: {
+        CALC_STORE_VALUE: (state, action) => {
+
+        }
+    },
     extraReducers: (builder) => {
-        builder
-            .addCase(createPost.pending, (state) => {
-                state.status = "loading";
-            })
-            .addCase(createPost.fulfilled, (state, action) => {
-                state.status = "succeeded";
-                state.error = null;
-                console.log(action.payload);
-                state.posts.push(action.payload);
-            })
-            .addCase(createPost.rejected, (state, action) => {
-                state.status = "rejected";
-                state.error = action.error.message;
-            })
-            .addCase(getPosts.pending, (state) => {
-                state.status = "loading";
-            })
-            .addCase(getPosts.fulfilled, (state, action) => {
-                state.status = "succeeded";
-                state.error = null;
-                console.log(action.payload);
-                state.posts(action.payload);
-            })
-            .addCase(getPosts.rejected, (state, action) => {
-                state.status = "rejected";
-                state.error = action.error.message;
-            })
-            .addCase(getPost.pending, (state) => {
-                state.status = "loading";
-            })
-            .addCase(getPost.fulfilled, (state, action) => {
-                state.status = "succeeded";
-                state.error = null;
-                console.log(action.payload);
-                state.posts(action.payload);
-            })
-            .addCase(getPost.rejected, (state, action) => {
-                state.status = "rejected";
-                state.error = action.error.message;
-            });
-    }
+        builder.addCase(createPost.pending, (state) => {
+            state.isLoading = true;
+        }).addCase(createPost.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.isSuccess = true;
+            console.log(action.payload);
+            state.posts.push(action.payload);
+            toast.success("Post added successfully");
+        }).addCase(createPost.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isError = true;
+            state.message = action.payload;
+            toast.error(action.payload);
+        });
+    },
 });
 
-export const getPostsStatus = (state) => state.posts.status;
-
+export const {CALC_STORE_VALUE} = postsSlice.actions;
+export const selectIsLoading = (state) => state.posts.isLoading;
 export default postsSlice.reducer;

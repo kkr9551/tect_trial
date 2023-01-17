@@ -1,95 +1,139 @@
 import PostMessage from "../models/postMessage.js";
-import express from "express";
-import mongoose from "mongoose";
-import User from "../models/User.js";
-
-/**get all posts */
-export const getPosts = async(req, res) => {
-    //res.send('This works');
-    try {
-        const postMessage = await PostMessage.find();
-        res.status(200).json(postMessage);
-    } catch (error) {
-        res.status(404).json({message: error.message});
-    }
-};
-
-export const getPost = async (req, res) => {
-    try {
-        const post = await PostMessage.findById(req.params.id);
-        res.status(200).json(post);
-    } catch (error) {
-        res.status(404).json({message: error.message});
-    }
-}
-
-/**get a user's posts */
-export const getUserPosts = async (req, res) => {
-    try {
-        const {userId} = req.params;
-        const postMessage = await PostMessage.find({userId});
-        res.status(200).json(postMessage);
-    } catch (error) {
-        res.status(404).json({message: error.message});
-    }
-};
+//import express from "express";
+//import mongoose from "mongoose";
+//import User from "../models/User.js";
+import asyncHandler from "express-async-handler";
+import { fileSizeFormatter } from "../utils/fileUpload.js";
+//import { v2 as cloudinary } from 'cloudinary';
 
 /**create a post */
-export const createPost = async(req, res) => {
-    //res.send('Creation'); 
-    //the property of req. req.body contains pairs of data submitted in the req body;
-    //its default value is undefined. It is populated when you use the body-parser middleware.
-    try {
-        //var newPost = await newPost.save();
-        const {userId, title, tags, content, picturePath} = req.body;
-        const user = await User.findById(userId);
-        const newPost = new PostMessage({
-            userId,
-            userName,
+export const createPost = asyncHandler(async (req, res) => {
+    const {title, tags, content} = req.body;
+
+    //validation
+    if (!title || !tags || !content) {
+        res.status(400)
+        throw new Error("Please fill in all required fields");
+    }
+
+    /**handle image upload */
+    let fileData = {};
+    if (req.file) {
+        //save file to cloudinary before handling image upload
+        /*let uploadedFile;
+        try {
+            uploadedFile = await cloudinary.uploader.upload(
+                req.file.path, {folder: "Tect", resource_type: "image"}); 
+        } catch (error) {
+            res.status(500);
+            throw new Error("Image could not be uploaded");
+        }*/
+
+        fileData = {
+            fileName: req.file.originalname,
+            filePath: req.file.path,
+            fileType: req.file.mimetype,
+            fileSize: fileSizeFormatter(req.file.size, 2),
+        }
+    }
+
+    //manage image upload
+    const post = await PostMessage.create({
+        user: req.user.id,
+        title,
+        tags,
+        content,
+        image: fileData,
+    });
+    res.status(201).json(post);
+});
+
+/**get all posts */
+export const getPosts = asyncHandler(async (req, res) => {
+    const posts = await PostMessage
+        .find({user: req.user.id})
+        .sort("-createdAt"); //sort all the posts in an ascending order
+    res.status(200).json(posts);
+});
+
+/**get a single post */
+export const getPost = asyncHandler(async (req, res) => {
+    const post = await PostMessage.findById(req.params.id);
+    if (!post) {
+        res.status(404);
+        throw new Error("Post not found");
+    }
+
+    //match post to its user
+    if (post.user.toString() !== req.user.id) {
+        res.status(401);
+        throw new Error("User not authorized");
+    }
+    res.status(200).json(post);
+});
+
+/**delete a post */
+export const deletePost = asyncHandler(async (req, res) => {
+    const post = await PostMessage.findById(req.params.id);
+    if (!post) {
+        res.status(401);
+        throw new Error("Post not found");
+    }
+
+    if (post.user.toString() !== req.user.id) {
+        res.status(401);
+        throw new Error("User not authorised");
+    }
+    
+    await post.remove();
+    res.status(200).json(post);
+});
+
+/**update post */
+export const updatePost = asyncHandler(async (req, res) => {
+    const {title, tags, content} = req.body;
+    const {id} = req.params;
+    const post = await PostMessage.findById(id);
+    if (!post) {
+        res.status(404);
+        throw new Error('Post not found');
+    }
+    if (post.user.toString() !== req.user.id) {
+        res.status(404);
+        throw new Error('User not authorized');
+    }
+
+    //handle image upload
+    let fileData = {};
+    if (req.file) {
+        fileData = {
+            fileName: req.file.originalname,
+            filePath: req.file.path,
+            fileType: req.file.mimetype,
+            fileSize: fileSizeFormatter(req.file.size, 2),
+        }
+    }
+
+    //update
+    const updatedPost = await PostMessage.findByIdAndUpdate(
+        {_id: id},
+        {
             title,
             tags,
-            picturePath,
-            userPicturePath: user.picturePath,
             content,
-            evidence
-        });
-        await newPost.save();
+            category,
+            image: /*fileData || post.image*/ Object.keys(fileData).length === 0 ?
+                post ?. image : fileData,
+        },
+        {
+            new: true,
+            runValidators: true,
+        }
+    );
+    res.status(200).json(updatedPost);
+});
 
-        //fetching all the posts
-        const post = await PostMessage.find();
-
-        res.status(201),json(post); 
-    } catch (error) {
-        res.status(409).json({message: error.message});
-    }
-};
-
-
-/*
-export const updatePost = async(req, res) => {
-    const {id: _id} = req.params;
-    const post= req.body;
-
-    if (!mongoose.Types.ObjectId.isValid(_id)) {
-        return res.status(404).send("No post with that id. ");
-    } else {
-        const updatedPost = await PostMessage.findByIdAndUpdate(_id, {...post, _id}, {new: true});
-        return res.json(updatedPost);
-    }
-};
-
-export const deletePost = async(req, res) => {
-    const {id} = req.params;
-    if(!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).send("No post with that id. ");
-    } else {
-        await PostMessage.findByIdAndRemove(id);
-        console.log('DELETE!');
-        res.json({message: 'Post deleted successfully! '});
-    }
-};
-
-export const likePost = async(req, res) => {
+/*export const likePost = async(req, res) => {
     const {id} = req.params;
     if(!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).send("No post with that id. ");

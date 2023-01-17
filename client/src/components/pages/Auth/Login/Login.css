@@ -1,0 +1,145 @@
+.loginContainer {
+    width: 850px;
+    height: 650px;
+    position: absolute;
+    left: 220px;
+    top: 180px;
+    background-color: none;
+    border-radius: 5%;
+}
+
+.loginContainer h1 {
+    position: relative;
+    left: 220px;
+    right: 120px;
+}
+
+.loginForm {
+    width: 700px;
+    height: 400px;
+    background-color: white;
+    position: relative;
+    left: 180px;
+    display: flex;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.loginform-box {
+    background-color: none;
+    width: 600px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    top: 20px;
+    display: 'flex';
+    justify-content: 'center';
+    align-items: center;
+}
+
+.login-input-group {
+    flex-direction: column;
+    display: flex;
+    gap: 0.5rem;
+    left: 140px;
+    position: relative;
+
+}
+
+.login-input-group label {
+    text-align: left;
+    display: block;
+    margin-top: 0.3rem;
+    color: #2D2929;
+}
+
+.login-input-group input {
+    padding: 0.5rem;
+    border: 1px solid #2D2929;
+    font-size: 1rem;
+    color: #2D2929;
+    width: 100%;
+    border-radius: 3px;
+}
+
+.login-input-group input:hover {
+    border: 1px solid #092E75
+}
+
+.loginform-box label, input {
+    font-size: 12px;
+    position: relative;
+    top: 0.25rem;
+}
+
+
+.loginbtns {
+    width: 400px;
+    height: 60px;
+    background-color: none;
+    position: relative;
+    top: 250px;
+    right: 230px;
+}
+
+.loginbtns button {
+    background-color: #092E75;
+    border: 2px solid #2D2929;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 285px;
+    height: 45px;
+    position: relative;
+    color: #EFE6E6;
+    font-weight: bold;
+    font-size: 1rem;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.loginbtns button:hover {
+    border: 2px solid #2D2929;
+    background-color: green;
+}
+
+.loginlinks {
+    display: flex;
+    position: relative;
+    top: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginlinks .changeform {
+    color: #2D2929;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.linkTR {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2D2929
+}
+
+.linkTR:hover {
+    color: red;
+}
+
+.resetpw {
+    position: relative;
+    top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #2D2929;
+}
+
+
+
+
+
+
+

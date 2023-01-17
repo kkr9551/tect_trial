@@ -4,39 +4,48 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
-
 import helmet from "helmet";
 import morgan from "morgan";
-import multer from "multer";
+//import multer from "multer";
 import path from "path";
 import { fileURLToPath } from "url";
-
-import { register } from "./controllers/auth.js";
+//import { register } from "./controllers/auth.js";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import postRoutes from './routes/posts.js';
-import { protect } from "./middleware/auth.js";
-import { createPost } from "./controllers/posts.js";
+//import { protect } from "./middleware/auth.js";
+//import { createPost } from "./controllers/posts.js";
 import { errorHandler } from "./middleware/error.js";
 
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 dotenv.config();
+
 const app = express();
+/**middleware */
 app.use(express.json());
 app.use(bodyParser.json({limit: "50mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true}));
+
 app.use(cookieParser());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({policy: "cross-origin"}));
 app.use(morgan("common"));
-app.use(cors());
-app.use("/assets", express.static(path.join(__dirname, 'public/assets')));
+app.use(cors({
+    origin: ["http://localhost:3000" /**the second could be the url after we deploy this website */],
+    credentials: true
+}));
+
+//use this function and package path to link the file fileUpload, so we specify where the uploaded images are stored
+app.use("/upload", express.static(path.join(__dirname, 'upload')));
+
+/**error middleware */
 app.use(errorHandler);
 
 /**file storage */
-export const storage = multer.diskStorage({
+/*export const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, "public/assets");
     },
@@ -45,23 +54,27 @@ export const storage = multer.diskStorage({
     },
 });
 
-const upload = multer({storage});
+const upload = multer({storage});*/
 
 /**route with files */
-app.post('/auth/register', upload.single("picture"), register);
-app.post("/posts", protect, upload.single("picture"), createPost);
+//app.post('/auth/register', upload.single("picture"), register);
+//app.post("/posts", protect, upload.single("picture"), createPost);
 
-/**routes */
-app.use('/auth', authRoutes);
-app.use('/users', userRoutes);
-app.use('/posts', postRoutes);
+/**routes middleware*/
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/posts', postRoutes);
 
-const CONNECTION_URL = 'mongodb+srv://kkr9551:TOiVuCte0ak28MtK@cluster0.ssxt6yk.mongodb.net/?retryWrites=true&w=majority';
+/**route */
+app.get("/", (req, res) => {
+    res.send("Home page");
+});
+
 const PORT = process.env.PORT || 5000;
 //env. here stands for the environment. 
 //In many environments you can set the env. variable PORT to tell your web server what port to listen on.
 
-mongoose.connect(CONNECTION_URL, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => app.listen(PORT, () => console.log(`Server running on ${PORT}`)))
 //the connect() function also accepts a callback function and return a promise.
 //then we use app.listen() as the promise to bind and listen for connections on the specified host and path.

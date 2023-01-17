@@ -77,14 +77,12 @@ ul {
 .menu-link2 {
     padding: 0;
     margin: 0;
-    list-style: none;
     display: flex;
     gap: 2.5rem;
     position: relative;
     bottom: 45px;
 }
 
-.item1 {
-    height: 24px;
-}
+
+
 

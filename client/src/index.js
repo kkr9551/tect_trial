@@ -9,8 +9,8 @@ import "./global.css";
 //import { composeWithDevTools } from 'redux-devtools-extension'
 import { configureStore } from "@reduxjs/toolkit";
 import {
-    persistStore,
-    persistReducer,
+    /*persistStore,*/
+    /*persistReducer,*/
     FLUSH,
     REHYDRATE,
     PAUSE,
@@ -20,15 +20,15 @@ import {
 } from "redux-persist";
 import authReducer from "./states/AuthSlice";
 import postsReducer from "./states/PostsSlice";
-import { PersistGate } from "redux-persist/integration/react";
-import storage from "redux-persist/lib/storage";
+//import { PersistGate } from "redux-persist/integration/react";
+//import storage from "redux-persist/lib/storage";
 
-const persistConfig = {key: "root", storage, version: 1};
-const persistedReducer = persistReducer(persistConfig, authReducer);
+//const persistConfig = {key: "root", storage, version: 1};
+//const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore(
     {
-        reducer: {persistedReducer, postsReducer},
+        reducer: {/*persistedReducer*/auth: authReducer, posts: postsReducer},
         middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             serializableCheck: {
                 ignoredActions: [
@@ -52,9 +52,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <Provider store={store}>
-            <PersistGate loading={null} persistor={persistStore(store)}>
+            {/*<PersistGate loading={null} persistor={persistStore(store)}>*/}
                 <App />
-            </PersistGate>    
         </Provider>
     </React.StrictMode>
 );

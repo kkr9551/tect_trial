@@ -1,32 +1,61 @@
+import asyncHandler from "express-async-handler";
 import User from "../models/User.js";
+import jwt from "jsonwebtoken";
+
 
 /**get user data */
-export const getUser = async (req, res) => {
+export const getUser = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id);
     if (user) {
-        const {_id, userName, email, picturePath, cases} = user;
-        res.status(200).json({_id, userName, email, picturePath, cases});
+        const {_id, name, email, picturePath, cases} = user;
+        res.status(200).json({_id, name, email, picturePath, cases});
+    } else {
+        res.status(400);
+        throw new Error("User not found");
+    }
+});
+
+/**get log in status */
+export const loginStatus = asyncHandler(async (req, res) => {
+    const token = req.cookies.token;
+    if(!token) {
+        return res.json(false);
+    }
+
+    //verify token
+    const verified = jwt.verify(token, process.env.JWT_SECRET);
+
+    if (verified) {
+        return res.json(true);
+    } else {
+        return res.json(false);
+    }
+});
+
+/**update user */
+export const updateUser = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.user._id);
+
+    if (user) {
+        const {name, email, picturePath} = user;
+        user.email = email;
+        user.name = req.body.name || name;
+        user.picturePath = req.body.picturePath || picturePath;
+
+        const updatedUser = await user.save();
+        res.status(200).json({
+            _id: updatedUser._id, 
+            name: updatedUser.name, 
+            email: updatedUser.email, 
+            picturePath: updatedUser.picturePath, 
+            cases: updatedUser.cases,
+        });
     } else {
         res.status(404);
         throw new Error("User not found");
     }
-};
+});
 
-/**get log in status */
-export const loginStatus = async (req, res) => {
-    const token = req.cookies.token;
-    if(!token) {
-        res.json(false);
-    }
-
-    //verify token
-    const verified = jwt.verify(token, procee.env.JWT_SECRET);
-    if (verified) {
-        res.json(true);
-    } else {
-        res.json(false);
-    }
-};
 
 /*export const getUserWitnesses = async (req, res) => {
     try {

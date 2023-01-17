@@ -1,6 +1,7 @@
 import express from "express";
-import { getPosts, getUserPosts, getPost, createPost } from '../controllers/posts.js';
+import { createPost, getPosts, getPost, deletePost, updatePost } from '../controllers/posts.js';
 import { protect } from "../middleware/auth.js";
+import { upload } from "../utils/fileUpload.js";
 
 const router = express.Router();
 //create a modular, mountable route handler. It's a complete middleware and routing system.
@@ -12,8 +13,11 @@ const router = express.Router();
 })
 */
 
-router.get('/', protect, getPosts);
-router.get('/:userId', protect, getUserPosts);
-router.get('/:id', protect, getPost);
+/**we also specify the route with files */
+router.post("/", protect, upload.single("image"), createPost);
+router.get("/", protect, getPosts);
+router.get("/:id", protect, getPost);
+router.delete("/:id", protect, deletePost);
+router.patch("/:id", protect, upload.single("image"), updatePost);
 
 export default router;
