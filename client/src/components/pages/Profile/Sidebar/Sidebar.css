@@ -46,3 +46,9 @@
 .sublink .sidebar-item .sidebar-title {
     padding-left: 40px;
 }
+
+#logo-insidebar {
+    width: 100px;
+    height: 35px;
+    cursor: pointer;
+}

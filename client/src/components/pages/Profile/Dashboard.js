@@ -1,11 +1,15 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Sidebar from './Sidebar/Sidebar';
+import React from 'react';
+import UseRedirectLoggedOutUser from '../../../custom hook/UseRedirectLoggedOutUser';
+
 
 const Dashboard = () => {
-    return (
-        <div>Dashboard</div>
-    )
+  UseRedirectLoggedOutUser("/login");
+
+  return (
+    <div>
+        Dashboard
+    </div>
+  )
 }
 
-export default Dashboard
+export default Dashboard;

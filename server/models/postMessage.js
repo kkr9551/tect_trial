@@ -6,34 +6,31 @@ const postSchema = mongoose.Schema(
     {
     //Everthing in mongoose starts with a schema. 
     //Each schema maps to the collection and define the shape of doc.
-        userId: {
-            type: String,
-            required: true
-        },
-        userName: {
-            type: String,
-            required: true
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            required: true,
+            ref: "User",
         },
         title: {
             type: String,
-            required: true
+            required: [true, "Please add the title of the original"],
+            trim: true,
         },
         tags: {
             type: [String],
-            required: true
+            required: [true, "Please add at least one tag"],
+            trim: true,
         },
-        picturePath: {
-            String,
-            required: false
-        }
+        image: {
+            type: Object,
+            default: {},
+        },
         content: {
             type: String,
-            required: true
+            required: [true, "Please detail your questions or evidence"],
+            trim: true,
         },
-        evidence: {
-            type: Number,
-            default: 0
-        },
+
     },
     {
         timestamp: true

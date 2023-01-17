@@ -4,6 +4,7 @@ import { RiMenuAddLine } from "react-icons/ri";
 import Menu from "./Menu";
 import SidebarItem from "./SidebarItem";
 import { useNavigate } from 'react-router-dom';
+import './Sidebar.css';
 
 const Sidebar = ({children}) => {
     const [isOpen, setIsOpen] = useState(true);
@@ -27,12 +28,12 @@ const Sidebar = ({children}) => {
                             id="logo-insidebar"
                             onClick={goHome} 
                             style={{cursor: "pointer"}}
-                            size={35}
+                            
                         />
                     </div>
-                    <div className="bars" style={{marginLeft: isOpen ? "100px" : "0px"}}>
-                        <RiMenuAddLine onClick={toggle} />
-                        
+                    
+                    <div className="bars" style={{marginLeft: isOpen ? "80px" : "0px"}}>
+                        <RiMenuAddLine onClick={toggle} /> 
                     </div>
                 </div>
                 {Menu.map((item, index) => {

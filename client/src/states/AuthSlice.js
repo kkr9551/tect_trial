@@ -4,66 +4,46 @@ import { createSlice } from "@reduxjs/toolkit";
 //import { sub } from "date-fns";
 //import * as api from '../../../../api';
 
-const name = JSON.parse(localStorage.getItem("userName"));
+const name = JSON.parse(localStorage.getItem("name"));
 
 const initialState = {
     isLoggedIn: false,
-    name: name ? name : "",
+    name: name ? name : "", //the name of state will be saved in the local storage
     user: {
-        userName: "",
+        name: "",
         email: "",
         picturePath: "",
         cases: 0,
     },
-    token: null,
-    posts: [],
+    userID: "",
 };
 
 export const authSlice = createSlice({
     name: "auth",
     initialState,
     reducers: {
+        //inside this reducers function, we created actions 
         setLogin: (state, action) => {
             state.isLoggedIn = action.payload;
-            //state.user = action.payload.user;
-            //state.token = action.payload.token;
-        },
-        setLogout: (state) => {
-            state.user = null;
-            state.token = null;
-        },
-        /*setWitnesses: (state, action) => {
-            if (state.user) {
-                state.user.witnesses = action.payload.witnesses;
-            } else {
-                console.error("Witnesses not found");
-            }
-        },*/
-        setPosts: (state, action) => {
-            state.posts = action.payload.posts;
-        },
-        setPost: (state, action) => {
-            const updatedPosts = state.posts.map((post) => {
-                if (post._id === action.payload.post._id) {
-                    return action.payload.post;
-                }
-                return post;
-            });
-            state.posts = updatedPosts;
         },
         setUser: (state, action) => {
             const profile = action.payload;
-            state.user.userName = profile.userName;
+            state.user.name = profile.name;
             state.user.email = profile.email;
             state.user.picturePath = profile.picturePath;
             state.user.cases = profile.cases;
         },
+        //setting the name of user is for avoiding repeating the operation on the display of the user name
+        //we could store that user name in the local storage
         setName: (state, action) => {
-            localStorage.setItem("userName", JSON.stringify(action.payload));
+            localStorage.setItem("name", JSON.stringify(action.payload));
             state.name = action.payload
         },
     }
 });
 
-export const { setLogin, setLogout, setWitnesses, setPosts, setPost, setUser, setName } = authSlice.actions;
+export const { setLogin, setUser, setName } = authSlice.actions;
+export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
+export const selectUser = (state) => state.auth.user;
+export const selectName = (state) => state.auth.name;
 export default authSlice.reducer;

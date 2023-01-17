@@ -3,23 +3,24 @@
  */
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
+import asyncHandler from "express-async-handler";
 
-export const protect = async (req, res, next) => {
+export const protect = asyncHandler(async (req, res, next) => {
     try {
         const token = req.cookies.token;
         if (!token) {
-            res.status(402)
+            res.status(401)
             throw new Error("Not authorised, please log in");
         }
 
         //verify token
-        const verified = jwt.verify(token, process.env.JWT_SECRET);
+        const verified = jwt.verify(token, process.env.JWT_SECRET /**verify the token with the JWT_SECRET we have set */);
 
         //get user id from token
         const user = await User
             .findById(verified.id/**this gives all the info stored in the cookie */)
             .select("-password"/**query projection */);
-        /**Mongoose model provides stati helper functions for CRUD operations
+        /**Mongoose model provides state helper functions for CRUD operations
          * these functions return a query object
          * Model.delete/updateMany, Model.delete/updateOne
          * Model.find, Model.findById, ...
@@ -39,7 +40,7 @@ export const protect = async (req, res, next) => {
         res.status(401);
         throw new Error("Not authorised, please log in");
     }
-}
+});
 
 /*export const verifyToken = async (req, res, next) => {
     try {

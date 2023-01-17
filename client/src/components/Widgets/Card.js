@@ -1,10 +1,10 @@
 import React from 'react';
-import "./Card.css";
+import styles from "./Card.css";
 
-const Card = ({children}) => {
+const Card = ({children, cardClass}) => {
   return (
-    <div className="cardForProfile">{children}</div>
-  )
+    <div className={`${styles.card} ${cardClass}`}>{children}</div>
+  );
 };
 
 export default Card;

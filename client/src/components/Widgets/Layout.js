@@ -1,13 +1,13 @@
 import React from 'react';
-import Footer from "./footer/footer";
+import Navigation from "./Navbar/Navbar";
 
 const Layout = ({children}) => {
     return (
         <>
-            <div>
-                {children}
-            </div>
-            <Footer />
+            <Navigation />
+                <div style={{minHeight: "80vh"}} className="--pad">
+                    {children}
+                </div>
         </>
         
     );
