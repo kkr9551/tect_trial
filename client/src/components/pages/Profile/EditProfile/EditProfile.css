@@ -1,0 +1,87 @@
+.profile {
+    margin: 2rem 0;
+}
+
+.profileCard {
+    width: 900px;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    top: 120px;
+    left: 120px;
+    padding: 1rem 0;
+    display: flex;
+    background-color: #EFE6E6;
+}
+
+.editProfileForm {
+    height: auto;
+    width: 650px;
+    position: relative;
+    left: 40px;
+    margin-right: 10px;
+}
+
+.profile-photo {
+    text-align: center;
+    position: relative;
+    left: 20px;
+}
+
+.profile-data {
+    margin: 0 1rem;
+    
+}
+
+p {
+    position: relative;
+    left: 20px;
+}
+
+.editBtn {
+    font-size: 1.6rem;
+    font-weight: 400;
+    padding: 6px 8px;
+    margin: 0 5px 0 0;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+    position: relative;
+    top: 50px;
+}
+
+.input-group-editP {
+    flex-direction: column;
+    display: flex;
+    gap: 0.5rem;
+    position: relative;
+    left: 50px;
+}
+
+.input-group-editP label {
+    text-align: left;
+    display: block;
+    margin-top: 0.3rem;
+    color: #2D2929;
+}
+
+input {
+    padding: 0.5rem;
+    border: 1px solid #2D2929;
+    font-size: 1rem;
+    color: #2D2929;
+
+    border-radius: 3px;
+    font-weight: 300;
+    outline: none;
+    display: block;
+}
+
+input:hover {
+    border: 1px solid #092E75
+}

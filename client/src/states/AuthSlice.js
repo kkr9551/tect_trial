@@ -14,6 +14,7 @@ const initialState = {
         email: "",
         picturePath: "",
         cases: 0,
+        selfIntro: "I am ..."
     },
     userID: "",
 };
@@ -32,6 +33,7 @@ export const authSlice = createSlice({
             state.user.email = profile.email;
             state.user.picturePath = profile.picturePath;
             state.user.cases = profile.cases;
+            state.user.selfIntro = profile.selfIntro;
         },
         //setting the name of user is for avoiding repeating the operation on the display of the user name
         //we could store that user name in the local storage

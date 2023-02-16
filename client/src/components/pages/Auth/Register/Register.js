@@ -17,7 +17,7 @@ const initialState = {
 const Input = ({id, type, label, value, onChange, required, name}) => {
     return (
         <>
-            <div className='input-group'>
+            <div className='input-group-register'>
                     <label htmlFor={id}>{label}</label>
                     <input 
                         id={id} 
@@ -89,7 +89,7 @@ const Register = () => {
         <div className='registerContainer'>
             <h1>Welcome to TECT</h1>
             {isLoading && (<Loader />)}
-                    <form onSubmit={register}>
+                    <form onSubmit={register} className='registerForm'>
                         <div className="form-box">
                         <Input 
                             type="text"
@@ -120,7 +120,7 @@ const Register = () => {
                             name="password2"
                             id="password2"/>
 
-                        <div className='btns'>
+                        <div className='register-btns'>
                             <button
                                 type="submit"
                                 className='submitBtn'
@@ -130,7 +130,7 @@ const Register = () => {
                             </button>
                         </div>
                         <div className="links">
-                            <p className="changeform">
+                            <p className="changeform-register">
                                 &nbsp; Already have an account? &nbsp; 
                             </p>
                             <Link to='/login' className='linkTL'>Log in</Link>

@@ -1,0 +1,29 @@
+.postSummary {
+    width: 850px;
+    position: absolute;
+    left: 380px;
+    top: 120px;
+}
+
+.infoSummary1 {
+    flex-flow: row wrap;
+    display: flex;
+}
+
+.infoSummary2 {
+    flex-flow: row wrap;
+    display: flex;
+}
+
+.card1 {
+    background-color: #03a5fc;
+}
+.card2 {
+    background-color: #32963d;
+}
+.card3 {
+    background-color: #ff6523;
+}
+.card4 {
+    background-color: #8629d1;
+}

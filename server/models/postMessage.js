@@ -27,13 +27,31 @@ const postSchema = mongoose.Schema(
         },
         content: {
             type: String,
-            required: [true, "Please detail your questions or evidence"],
+            required: [true, "Please detail your evidence"],
             trim: true,
         },
-
+        visibility: {
+            type: String,
+            enum: ["public", "private"],
+            required: [true, "Please determine the visibility of your evidence"],
+            default: "private",
+        },
+        marks: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+        }],
+        questions: {
+            type: Number,
+            default: 0,
+        },
+        appreciations: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+        }],
     },
+    /**options: configurable options which can be passed to the constructor or the set method */
     {
-        timestamp: true
+        timestamps: true
     }
 );
 

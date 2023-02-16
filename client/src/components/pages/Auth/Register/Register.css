@@ -14,12 +14,12 @@ h1 {
     right: 120px;
 }
 
-form {
+.registerForm {
     width: 700px;
     height: 500px;
     background-color: white;
     position: relative;
-    left: 180px;
+    left: 150px;
     display: flex;
     border: 1px solid gray;
     border-radius: 5px;
@@ -36,16 +36,15 @@ form {
     align-items: center;
 }
 
-.input-group {
+.input-group-register {
     flex-direction: column;
     display: flex;
     gap: 0.5rem;
-    left: 140px;
     position: relative;
-    left: 50px;
+    left: 40px;
 }
 
-.input-group label {
+.input-group-register label {
     text-align: left;
     display: block;
     margin-top: 0.3rem;
@@ -72,16 +71,16 @@ input:hover {
 }
 
 
-.btns {
+.register-btns {
     width: 400px;
     height: 60px;
     background-color: none;
     position: relative;
     top: 70px;
-    left: 200px;
+    left: 180px;
 }
 
-button {
+.submitBtn {
     background-color: #092E75;
     border: 2px solid #2D2929;
     border-radius: 4px;
@@ -109,7 +108,7 @@ button:hover {
     align-items: center;
 }
 
-.links .changeform {
+.links .changeform-register {
     color: #2D2929;
     width: 200px;
     text-align: center;

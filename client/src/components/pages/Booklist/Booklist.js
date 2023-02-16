@@ -1,17 +1,20 @@
 import React from 'react';
-
+import Slider from './slider/Slider';
 
 const Booklist = () => {
+  const slides = [
+    {"src": "img/slide1.jpg"},
+    {"src": "img/slide2.jpg"},
+    {"src": "img/slide3.jpg"},
+    {"src": "img/slide4.jpg"},
+];
     return(
         <>
-        <div>
-          <h1>Booklist</h1>
-        </div>
-        <div>
-
-        </div>
+          <div className="container-slider">
+            <Slider slides={slides} />
+          </div>
         </>
-    )
+    );
 };
 
 export default Booklist;

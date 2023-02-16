@@ -1,0 +1,40 @@
+.postDetails {
+    margin-bottom: 5rem;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    top: 200px;
+    left: 200px;
+}
+
+.detailCard {
+    width: 100%;
+    max-width: 500px;
+    padding: 1rem;
+    background-color: #EFE6E6;
+}
+
+.details {
+    margin-bottom: 1rem;
+}
+
+.badge {
+    background-color: var(--color-danger);
+    color: #2D2929;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 3px;
+}
+
+.group {
+    border: 1px solid var(--dark-blue);
+    padding: 5px;
+}
+
+.p-details {
+    color: #2D2929;
+}
+
+.p-h4 {
+    color: #2D2929;
+}

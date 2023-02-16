@@ -1,14 +1,17 @@
-import React, { useState/*, useEffect, useRef*/ } from "react";
-import { Link, useNavigate, useMatch, useResolvedPath } from "react-router-dom";
+import React from "react";
+import { Link, /*useNavigate,*/ useMatch, useResolvedPath } from "react-router-dom";
 import "./Navbar.css";
 //import {MdNotifications} from 'react-icons/md';
 //import { BsFillPersonFill/*, BsGlobe*/ } from 'react-icons/bs';
 //import {Notification} from "./Notifi";
 import Image from "../../../img/logo2.png";
-import { useDispatch } from "react-redux";
-import { setLogin } from "../../../states/AuthSlice";
-import { HiOutlineLogout, HiOutlineUser } from "react-icons/hi";
-import { logoutUser } from "../../../services/authServices";
+//import { useDispatch } from "react-redux";
+import { ShowOnLogout, ShowOnLogin } from "../Protect/HiddenLink";
+//import { setLogin } from "../../../states/AuthSlice";
+import { HiOutlineLogin, HiOutlineUser } from "react-icons/hi";
+//import { logoutUser } from "../../../services/authServices";
+import { MdOutlineAppRegistration } from "react-icons/md";
+
 
 function CustomLink({/*href*/to, children, ...props}) {
     //const path = window.location.pathname;
@@ -25,7 +28,7 @@ function CustomLink({/*href*/to, children, ...props}) {
 };
 
 export default function Navigation() {
-    const [fix, setFix] = useState(false);
+    /*const [fix, setFix] = useState(false);
 
     const setFixed = () => {
         if(window.scrollY >= 592) {
@@ -35,23 +38,23 @@ export default function Navigation() {
         }
     };
 
-    window.addEventListener("scroll", setFixed);
+    window.addEventListener("scroll", setFixed);*/
 
     //const [openAccount, setOpenAccount] = useState(false);
     
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    //const dispatch = useDispatch();
+    //const navigate = useNavigate();
 
-    const logout = async () => {
+    /*const logout = async () => {
         await logoutUser();
         dispatch(setLogin(false));
         navigate("/");
-    };
+    };*/
     
     return(
         <div>
         
-        <nav className={fix ? 'nav fixed' : 'nav'}>
+        <nav className=/*{fix ? 'nav fixed' :*/ 'nav'>
             <div className="logo">
                 <Link /*href*/to="/">
                     <img src={Image} alt="logo" id="logo" />
@@ -69,12 +72,23 @@ export default function Navigation() {
 
             <div className="user_menu">
                 <ul className="menu-link2">
-                    <CustomLink to="/dashboard">
-                        <HiOutlineUser className="item1" />
-                    </CustomLink>
-                    <Link onClick={logout}>
-                        <HiOutlineLogout className="item2" />
-                    </Link>
+                    <ShowOnLogin>
+                        <CustomLink to="/dashboard">
+                            <HiOutlineUser className="item1" />
+                        </CustomLink>
+                    </ShowOnLogin>
+                    
+                    <ShowOnLogout>
+                        <CustomLink to="/register">
+                            <MdOutlineAppRegistration className="item2" />
+                        </CustomLink>
+                    </ShowOnLogout>
+                    
+                    <ShowOnLogout>
+                        <CustomLink to="/login">
+                            <HiOutlineLogin className="item3" />
+                        </CustomLink>
+                    </ShowOnLogout>
                 </ul>
             </div>
         </nav>

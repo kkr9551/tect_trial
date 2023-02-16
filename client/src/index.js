@@ -8,18 +8,17 @@ import App from './App';
 import "./global.css";
 //import { composeWithDevTools } from 'redux-devtools-extension'
 import { configureStore } from "@reduxjs/toolkit";
-import {
-    /*persistStore,*/
-    /*persistReducer,*/
+/*import {
     FLUSH,
     REHYDRATE,
     PAUSE,
     PERSIST,
     PURGE,
     REGISTER
-} from "redux-persist";
+} from "redux-persist";*/
 import authReducer from "./states/AuthSlice";
 import postsReducer from "./states/PostsSlice";
+import filterReducer from "./states/FilterSlice";
 //import { PersistGate } from "redux-persist/integration/react";
 //import storage from "redux-persist/lib/storage";
 
@@ -28,8 +27,12 @@ import postsReducer from "./states/PostsSlice";
 
 export const store = configureStore(
     {
-        reducer: {/*persistedReducer*/auth: authReducer, posts: postsReducer},
-        middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        reducer: {
+            auth: authReducer, 
+            posts: postsReducer, 
+            filter: filterReducer
+        },
+        /*middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             serializableCheck: {
                 ignoredActions: [
                     FLUSH, 
@@ -40,7 +43,7 @@ export const store = configureStore(
                     REGISTER
                 ]
             },
-        }),
+        }),*/
     }
 );
 

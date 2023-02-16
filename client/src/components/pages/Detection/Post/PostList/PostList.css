@@ -1,0 +1,21 @@
+.publicPostList {
+    color: #2D2929;
+    width: 850px;
+    max-height: 850px;
+    position: absolute;
+    left: 300px;
+    top: 250px;
+    background-color: #DAD4D4;
+}
+
+.tablePublic {
+    padding: 5px;
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 1.4rem;
+}

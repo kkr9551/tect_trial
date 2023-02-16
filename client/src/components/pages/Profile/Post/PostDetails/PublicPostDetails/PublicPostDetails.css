@@ -1,0 +1,42 @@
+.publicPostDetails {
+    margin-bottom: 5rem;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    top: 200px;
+    left: 200px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.publicDetailsCard {
+    width: 100%;
+    max-width: 500px;
+    padding: 1rem;
+    background-color: #EFE6E6;
+} 
+
+.publicDetails {
+    margin-bottom: 1rem;
+}
+
+.PDcontainer {
+    border: 1px solid var(--dark-blue);
+    padding: 5px;
+}
+
+.public-badge {
+    background-color: var(--color-danger);
+    color: #2D2929;
+    padding-left: 2px;
+    padding-right: 2px;
+    border-radius: 3px;
+}
+
+.p-ppdetails {
+    color: #2D2929;
+}
+
+.p-h4-ppdetails {
+    color: #2D2929;
+}
