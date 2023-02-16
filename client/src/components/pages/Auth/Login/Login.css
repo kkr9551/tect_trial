@@ -116,10 +116,14 @@
     font-weight: bold;
 }
 
+.changeform {
+    margin-right: 20px;
+}
+
 .linkTR {
     font-size: 14px;
     font-weight: bold;
-    color: #2D2929
+    color: #2D2929;
 }
 
 .linkTR:hover {

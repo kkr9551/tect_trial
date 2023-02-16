@@ -1,5 +1,7 @@
 import express from "express";
-import { createPost, getPosts, getPost, deletePost, updatePost } from '../controllers/posts.js';
+import { 
+    createPost, getPosts, getPost, deletePost, updatePost, getPublicPosts, getPublicStatus, getPublicPost, markPost, thankPost 
+} from '../controllers/posts.js';
 import { protect } from "../middleware/auth.js";
 import { upload } from "../utils/fileUpload.js";
 
@@ -16,8 +18,14 @@ const router = express.Router();
 /**we also specify the route with files */
 router.post("/", protect, upload.single("image"), createPost);
 router.get("/", protect, getPosts);
+router.get("/visibility", getPublicPosts);
+router.get("/:id/public", getPublicPost);
+router.get("/:id/visibility", getPublicStatus);
 router.get("/:id", protect, getPost);
 router.delete("/:id", protect, deletePost);
 router.patch("/:id", protect, upload.single("image"), updatePost);
+router.post("/:id/marked", protect, markPost);
+router.post("/:id/appreciated", protect, thankPost);
+
 
 export default router;

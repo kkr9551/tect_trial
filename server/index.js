@@ -17,28 +17,27 @@ import postRoutes from './routes/posts.js';
 //import { createPost } from "./controllers/posts.js";
 import { errorHandler } from "./middleware/error.js";
 
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 dotenv.config();
 
 const app = express();
 /**middleware */
 app.use(express.json());
-app.use(bodyParser.json({limit: "50mb", extended: true}));
-app.use(bodyParser.urlencoded({limit: "50mb", extended: true}));
-
+app.use(bodyParser.json({/*limit: "50mb",*/ extended: true}));
+app.use(bodyParser.urlencoded({/*limit: "50mb",*/ extended: true}));
 app.use(cookieParser());
+
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({policy: "cross-origin"}));
 app.use(morgan("common"));
+
 app.use(cors({
     origin: ["http://localhost:3000" /**the second could be the url after we deploy this website */],
     credentials: true
 }));
 
 //use this function and package path to link the file fileUpload, so we specify where the uploaded images are stored
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.use("/upload", express.static(path.join(__dirname, 'upload')));
 
 /**error middleware */

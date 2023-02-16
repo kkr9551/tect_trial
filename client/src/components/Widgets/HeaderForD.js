@@ -21,7 +21,7 @@ const HeaderForD = () => {
     return (
         <div className='--pad header'>
             <div className='--flex-between'>
-                <h3>
+                <h3 className='welcome'>
                     <span style={{fontWeight: 'bold'}}>Welcome, </span>
                     <span style={{color: 'red'}}>{name}</span>
                 </h3>

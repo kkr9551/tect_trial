@@ -25,7 +25,7 @@ body {
 .container-game {
     position: absolute;
     margin-top: 5rem;
-    top: 520px;
+    top: /*520px*/180px;
     left: 300px;
 }
 

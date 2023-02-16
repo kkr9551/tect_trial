@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
         cb(null, "upload");
     },
     filename: function (req, file, cb) {
-        cb(null, new Date().toISOString().replace(/:/g, "-") + file.originalname);
+        cb(null, new Date().toISOString().replace(/:/g, "-") + "-" +  file.originalname);
     }
 });
 
@@ -20,10 +20,10 @@ function fileFilter (req, file, cb) {
         file.mimetype === "image/jpg" || 
         file.mimetype === "image/jpeg"
     ) {
-        // To reject this file pass `false`, like so:
+        // To accept the file pass `true`, like so:
         cb(null, true);
     } else {
-        // To accept the file pass `true`, like so:
+        // To reject this file pass `false`, like so:
         cb(null, false);
     }
 
@@ -37,7 +37,9 @@ export const fileSizeFormatter = (bytes, decimal) => {
     const dm = decimal || 2;
     const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "YB", "ZB"];
     const index = Math.floor(Math.log(bytes) / Math.log(1000));
-    return(parseFloat((bytes / Math.pow(1000, index)).toFixed(dm)) + " " + sizes[index]);
+    return(
+        parseFloat((bytes / Math.pow(1000, index)).toFixed(dm)) + " " + sizes[index]
+    );
 };
 
 export const upload = multer({ storage, fileFilter });

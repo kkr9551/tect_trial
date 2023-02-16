@@ -1,0 +1,22 @@
+.container-profile {
+    display: flex;
+    flex-flow: row wrap;
+    position: absolute;
+    top: 100hv;
+}
+
+.image-frame {
+    border: transparent 1px solid;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+}
+
+.profileCard {
+    display: flex;
+    border: 1px solid #DED4D4;
+    border-radius: 6px;
+    width: 80%;
+    height: auto;
+    margin: 10px, 20px
+}

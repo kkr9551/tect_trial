@@ -23,16 +23,14 @@ const cardImage_2 = [
     {"src": '/img/card12.png', matched: false, alt: 'subtle'},
 ];
 
-const storyBoard = [
+/*const storyBoard = [
     {"src" : "/img/story1.png"},
     {"src" : "/img/story2.png"},
     {"src" : "/img/story3.png"},
     {"src" : "/img/story4.png"},
-];
+];*/
 
 const Cardgame = () => {
-    
-
     const [cards, setCards] = useState([]);
     const [choiceOne, setChoiceOne] = useState(null);
     const [choiceTwo, setChoiceTwo] = useState(null);
@@ -43,6 +41,8 @@ const Cardgame = () => {
     const [unlockS2, setUnlockS2] = useState(false);
     const [unlockS3, setUnlockS3] = useState(false);
     const [unlockS4, setUnlockS4] = useState(false);
+    const [unlockS5, setUnlockS5] = useState(false);
+    const [unlockS6, setUnlockS6] = useState(false);
 
     const [pairs, setPairs] = useState(0);
 
@@ -64,6 +64,8 @@ const Cardgame = () => {
         setUnlockS2(false);
         setUnlockS3(false);
         setUnlockS4(false);
+        setUnlockS5(false);
+        setUnlockS6(false);
         setPairs(0);
     };
 
@@ -92,7 +94,7 @@ const Cardgame = () => {
                     }); 
                 });
                 if (choiceOne.alt === "language") {
-                    alert("They don't just mean two languages literally.");
+                    setUnlockS5(true);
                 } else if (choiceOne.alt === "estrangement") {
                     setUnlockS1(true);
                 } else if (choiceOne.alt === "shape_ideo") {
@@ -100,7 +102,7 @@ const Cardgame = () => {
                 } else if (choiceOne.alt === "ideo") {
                     setUnlockS3(true);
                 } else if (choiceOne.alt === "subtle") {
-                    alert("Hoist a flag, or plant a flag? The former tells the ineffeable history");
+                    setUnlockS6(true);
                 } else if (choiceOne.alt === "anachronism") {
                     setUnlockS4(true);
                 }
@@ -129,7 +131,7 @@ const Cardgame = () => {
             <div className="matching_game">
                 <div className="matching_game-title">
                     <h1>Play a game, discover typical manipulation</h1>
-                    <p>
+                    <p className="sub-title-game">
                     Stories behind white papers
                     </p>
                 </div>
@@ -150,8 +152,8 @@ const Cardgame = () => {
                 </div>
 
                 <div className="displayTurns">
-                    <p>Turns: {turns}</p>
-                    <p>Pairs: {pairs}</p>
+                    <p className="turnsTitle">Turns: {turns}</p>
+                    <p className="pairsTitle">Pairs: {pairs}</p>
                     <div>{pairs === 6 && (<>
                         <p>You win</p>
                     </>)}</div> 
@@ -160,30 +162,68 @@ const Cardgame = () => {
                     <div className='story_board'>
                         {unlockS1 && (
                         <>
-                            <img src={storyBoard[0].src} alt="story1" />
+                            {/*<img src={storyBoard[0].src} alt="story1" />*/}
+                            <div className="storyContent">
+                                <h3>The 1st Story</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque mi sed elit maximus, et malesuada neque ultricies. Pellentesque sit amet efficitur metus, interdum aliquam arcu. Etiam varius erat sapien, sit amet placerat augue efficitur vel. Curabitur in neque molestie, sodales elit ac, tincidunt ante. Nullam et nulla elementum, venenatis dui quis, aliquet risus. Pellentesque lacus lacus, maximus ut mauris in, volutpat congue dui. Donec facilisis justo eu lectus congue, fermentum faucibus magna vehicula.</p>
+                                <button className="lmBtn">Learn more</button>
+                            </div>
                         </>)}
                         {unlockS2 && (
                         <>
-                            <img src={storyBoard[1].src} alt="story2" />
+                            {/*<img src={storyBoard[1].src} alt="story2" />*/}
+                            <div className="storyContent">
+                                <h3>The 2nd Story</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque mi sed elit maximus, et malesuada neque ultricies. Pellentesque sit amet efficitur metus, interdum aliquam arcu. Etiam varius erat sapien, sit amet placerat augue efficitur vel. Curabitur in neque molestie, sodales elit ac, tincidunt ante. Nullam et nulla elementum, venenatis dui quis, aliquet risus. Pellentesque lacus lacus, maximus ut mauris in, volutpat congue dui. Donec facilisis justo eu lectus congue, fermentum faucibus magna vehicula.</p>
+                                <button className="lmBtn">Learn more</button>
+                            </div>
                         </>)}
                         {unlockS3 && (
                         <>
-                            <img src={storyBoard[2].src} alt="story3" />
+                            {/*<img src={storyBoard[2].src} alt="story3" />*/}
+                            <div className="storyContent">
+                                <h3>The 3rd Story</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque mi sed elit maximus, et malesuada neque ultricies. Pellentesque sit amet efficitur metus, interdum aliquam arcu. Etiam varius erat sapien, sit amet placerat augue efficitur vel. Curabitur in neque molestie, sodales elit ac, tincidunt ante. Nullam et nulla elementum, venenatis dui quis, aliquet risus. Pellentesque lacus lacus, maximus ut mauris in, volutpat congue dui. Donec facilisis justo eu lectus congue, fermentum faucibus magna vehicula.</p>
+                                <button className="lmBtn">Learn more</button>
+                            </div>
                         </>)}
                         {unlockS4 && (
                         <>
-                            <img src={storyBoard[3].src} alt="story4" />
+                            {/*<img src={storyBoard[3].src} alt="story4" />*/}
+                            <div className="storyContent">
+                                <h3>The 4th Story</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque mi sed elit maximus, et malesuada neque ultricies. Pellentesque sit amet efficitur metus, interdum aliquam arcu. Etiam varius erat sapien, sit amet placerat augue efficitur vel. Curabitur in neque molestie, sodales elit ac, tincidunt ante. Nullam et nulla elementum, venenatis dui quis, aliquet risus. Pellentesque lacus lacus, maximus ut mauris in, volutpat congue dui. Donec facilisis justo eu lectus congue, fermentum faucibus magna vehicula.</p>
+                                <button className="lmBtn">Learn more</button>
+                            </div>
+                        </>)}
+                        {unlockS5 && (
+                        <>
+                            <div className="storyContent">
+                                <h3>The 5th Story</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque mi sed elit maximus, et malesuada neque ultricies. Pellentesque sit amet efficitur metus, interdum aliquam arcu. Etiam varius erat sapien, sit amet placerat augue efficitur vel. Curabitur in neque molestie, sodales elit ac, tincidunt ante. Nullam et nulla elementum, venenatis dui quis, aliquet risus. Pellentesque lacus lacus, maximus ut mauris in, volutpat congue dui. Donec facilisis justo eu lectus congue, fermentum faucibus magna vehicula.</p>
+                                <button className="lmBtn">Learn more</button>
+                            </div>
+                        </>)}
+                        {unlockS6 && (
+                        <>
+                            <div className="storyContent">
+                                <h3>The 6th Story</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque mi sed elit maximus, et malesuada neque ultricies. Pellentesque sit amet efficitur metus, interdum aliquam arcu. Etiam varius erat sapien, sit amet placerat augue efficitur vel. Curabitur in neque molestie, sodales elit ac, tincidunt ante. Nullam et nulla elementum, venenatis dui quis, aliquet risus. Pellentesque lacus lacus, maximus ut mauris in, volutpat congue dui. Donec facilisis justo eu lectus congue, fermentum faucibus magna vehicula.</p>
+                                <button className="lmBtn">Learn more</button>
+                            </div>
                         </>)}
                     </div>
                 </Grow>
                 <Grow in>
                     <div className="container_d">{
-                        pairs === 6 && (<>
-                            <p>
-                                If you would like to delve into stories behind these white papers, we recommend reading Prof. Monticelli's research papers and relative book chapters
-                            </p>
-                            <button>Learn more</button>
-                        </>)
+                        pairs === 6 && (
+                            <>
+                                <p>
+                                    If you would like to delve into stories behind these white papers, we recommend reading Prof. Monticelli's research papers and relative book chapters
+                                </p>
+                                <button>Learn more</button>
+                            </>
+                        )
                     }
                         
                     </div>

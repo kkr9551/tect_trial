@@ -1,0 +1,65 @@
+.profile {
+    margin: 2rem 0;
+}
+
+.pCard {
+    width: 750px;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    top: 120px;
+    left: 120px;
+    padding: 1rem 0;
+    display: flex;
+    background-color: #EFE6E6;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.profile-photo {
+    text-align: center;
+    position: relative;
+    left: 20px;
+}
+
+.profile-data {
+    margin: 0 1rem;
+}
+
+.profile-data p {
+    position: relative;
+    left: 20px;
+    color: black;
+}
+
+#profile-img {
+    width: 100%;
+    max-width: 350px;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+.editBtn {
+    font-size: 1.6rem;
+    font-weight: 400;
+    padding: 6px 8px;
+    margin: 0 5px 0 0;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+    position: relative;
+    top: 50px;
+    left: 20px;
+    height: 45px;
+}

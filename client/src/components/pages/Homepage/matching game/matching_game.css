@@ -12,11 +12,12 @@
     left: 140px
 }
 
-.matching_game-title p {
+.sub-title-game {
     padding-left: 20px;
     font-size: 18px;
     position: relative;
     left: 150px;
+    color: #EFE6E6;
 }
 
 .matching_game-title h1 {
@@ -73,6 +74,10 @@
     left: 382px
 }
 
+.turnsTitle, .pairsTitle {
+    color: #EFE6E6;
+}
+
 .story_board {
     margin-top: 180px;
     position: relative;
@@ -83,10 +88,10 @@
 }
 
 .container_d {
-    background-color: #EFE6E6;
+    background-color: none;
     width: 800px;
     height: 400px;
-    color: #1b1523;
+    color: #EFE6E6;
     position: absolute;
     
 }
@@ -100,4 +105,39 @@
 .container_d p {
     padding: 5px 5px 10px 10px;
     font-size: 20px;
+}
+
+.storyContent {
+    width: 600px;
+    height: 400px;
+    background-color: #A26320;
+    
+}
+
+.storyContent h3 {
+    position: relative;
+    top: 20px;
+    text-align: center;
+}
+
+.storyContent p {
+    position: relative;
+    top: 20px;
+    margin-right: 30px;
+}
+
+.storyContent .lmBtn {
+    position: relative;
+    top: 40px;
+    left: 20px;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: green;
+    cursor: pointer;
+    border: none;
+} 
+
+.lmBtn:hover {
+    border: 1px solid black;
 }

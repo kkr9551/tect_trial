@@ -4,7 +4,7 @@
     font-size: 1.6rem;
     font-weight: 400;
     padding: 6px 8px;
-    margin: 0 5px 0 0;
+    margin: 0 5px 10px 850px;
     border: 1px solid transparent;
     border-radius: 3px;
     cursor: pointer;
@@ -12,5 +12,16 @@
     justify-content: center;
     align-items: center;
     transition: all 0.3s;
-    width: 85px;
+    width: 95px;
+    height: 45px;
+    bottom: 15px;
+}
+
+.dashboard-btn:hover {
+    border: 1px solid #DAD4D4;
+}
+
+.welcome {
+    margin-left: 20px;
+    font-size: 1.6rem;
 }

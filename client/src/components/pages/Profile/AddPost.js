@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
-import PostForm from './PostForm/PostForm';
+import PostForm from './Post/PostForm/PostForm';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectIsLoading } from '../../../states/PostsSlice';
-import { createPost } from '../../../services/postsService';
+import { selectIsLoading, createPost } from '../../../states/PostsSlice';
 import { useNavigate } from 'react-router-dom';
 import Loader from '../../Widgets/Loader/Loader';
 
@@ -20,6 +19,7 @@ const AddPost = () => {
     const [postImage, setPostImage] = useState("");
     const [imagePreview, setImagePreview] = useState(null);
     const [content, setContent] = useState("");
+    const [visibility, setVisibility] = useState("");
 
     const isLoading = useSelector(selectIsLoading);
 
@@ -35,17 +35,24 @@ const AddPost = () => {
         setImagePreview(URL.createObjectURL(e.target.files[0]));
     };
 
+    const handleSelectChange = (e) => {
+        setVisibility(e.target.value);
+    }
+
     const savePost = async (e) => {
         e.preventDefault();
+
         const formData = new FormData();
+
         formData.append("title", title);
-        formData.append("tags", tags);
+        formData.append("tags", tags.split(","));
         formData.append("content", content);
         formData.append("image", postImage);
+        formData.append("visibility", visibility);
 
         console.log(...formData);
 
-        dispatch(createPost(formData));
+        await dispatch(createPost(formData));
 
         navigate('/dashboard');
     };
@@ -53,16 +60,18 @@ const AddPost = () => {
     return (
         <div>
             {isLoading && <Loader />}
-            <h3 className='addEviTitle'>Add new evidence</h3>
+            
             <PostForm 
                 post={post}
                 postImage={postImage}
                 imagePreview={imagePreview}
                 content={content}
                 setContent={setContent}
+                visibility={visibility}
+                handleSelectChange={handleSelectChange}
                 handleInputChange={handleInputChange}
                 handleImageChange={handleImageChange}
-                savePost={savePost}
+                savePost={savePost} 
             />
         </div>
         

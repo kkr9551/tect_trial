@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import Homepage from './components/pages/Homepage/Homepage';
-import About from './components/pages/About';
+import About from './components/pages/About/About';
 import Booklist from './components/pages/Booklist/Booklist';
 import Detection from './components/pages/Detection/Detection';
 import Contact from './components/pages/Contact';
@@ -9,11 +9,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 //import Navigation from './components/Widgets/Navbar/Navbar';
 //import Authentication from './components/pages/Authentication/Authentication';
 //import Profile from './components/pages/Profile/Profile'; 
-import MyProfile from './components/pages/Profile/MyProfile';
+import MyProfile from './components/pages/Profile/MyProfile/MyProfile';
 import Register from "./components/pages/Auth/Register/Register";
 import Login from "./components/pages/Auth/Login/Login";
 import Dashboard from "./components/pages/Profile/Dashboard";
-import EditProfile from "./components/pages/Profile/EditProfile";
+import EditProfile from "./components/pages/Profile/EditProfile/EditProfile";
 import AddPost from './components/pages/Profile/AddPost';
 import { getLoginStatus } from './services/authServices';
 import { setLogin } from './states/AuthSlice';
@@ -25,6 +25,9 @@ import axios from 'axios';
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from 'react-toastify';
 import Layout from './components/Widgets/Layout';
+import PostDetails from './components/pages/Profile/Post/PostDetails/PostDetails';
+import PublicPostDetails from './components/pages/Profile/Post/PostDetails/PublicPostDetails/PublicPostDetails';
+import EditPost from './components/pages/Profile/EditPost';
 //import { selectIsLoggedIn } from './states/AuthSlice';
 
 axios.defaults.withCredentials = true;
@@ -91,6 +94,12 @@ const App = () => {
                             <Layout>
                                 <Login/>
                             </Layout>}></Route>
+                        <Route 
+                            path="/public-post-details/:id"
+                            element={
+                                <Layout>
+                                    <PublicPostDetails/>
+                                </Layout>}></Route>
 
                         <Route
                             path='/dashboard' 
@@ -111,6 +120,24 @@ const App = () => {
                                 </Sidebar>
                             } />
                         <Route
+                            path='/post-details/:id' 
+                            element={
+                                <Sidebar>
+                                    <LayoutForD>
+                                        <PostDetails />
+                                    </LayoutForD>
+                                </Sidebar>
+                            } />
+                        <Route
+                            path='/edit-evidence/:id' 
+                            element={
+                                <Sidebar>
+                                    <LayoutForD>
+                                        <EditPost />
+                                    </LayoutForD>
+                                </Sidebar>
+                            } />
+                        <Route
                             path='/my-profile' 
                             element={
                                 <Sidebar>
@@ -127,7 +154,7 @@ const App = () => {
                                         <EditProfile />
                                     </LayoutForD>
                                 </Sidebar>
-                        }/>
+                            }/>
                     </Routes>
                 </div> 
                 

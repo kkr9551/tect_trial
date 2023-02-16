@@ -28,9 +28,14 @@ const UserSchema = new mongoose.Schema(
         },
         picturePath: {
             type: String,
-            required: true,
+            required: [true, "Please add a photo"],
             default: "https://i.ibb.co/4pDNDk1/avatar.png",
         }, 
+        selfIntro: {
+            type: String,
+            maxLength: [300, "Self introduction must not be more than 300 characters"],
+            default: "I am ...",
+        },
         cases: {
             type: Number,
             default: 0

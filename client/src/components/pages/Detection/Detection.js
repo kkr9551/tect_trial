@@ -1,62 +1,31 @@
-import React /*{useEffect}*/ from 'react'; 
+import React, {useEffect} from 'react'; 
 import './Detection.css';
-import {Container, Row, Col} from "react-bootstrap";
-//import Posts from "./Posts/Posts";
-import Form from "./Form/Form"
-import { createPost, getPostsStatus } from '../../../states/PostsSlice';
-//import {useDispatch} from "react-redux";
-//import {getPosts} from "../../../actions/posts";
-
+import PostList from './Post/PostList/PostList';
+//import { createPost, getPostsStatus } from '../../../states/PostsSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { getAllPublicPosts } from '../../../states/PostsSlice';
+//import { FaHandsHelping } from "react-icons/fa";
+//import { BsPinAngleFill, BsPatchQuestionFill } from "react-icons/bs";
+//import { AiOutlineEye } from "react-icons/ai";
+//import { SpinnerImg } from '../../Widgets/Loader/Loader';
 
 const Detection = () => { 
-  /*const dispatch = useDispatch();
-
+  const dispatch = useDispatch();
+  
     useEffect(() => {
-        dispatch(getPosts())
-    }, [dispatch]);*/
+        dispatch(getAllPublicPosts());
+        if (isError) {
+          console.log(message);
+        }
+    }, [dispatch]);
+  const {posts, isLoading, isError, message} = useSelector((state) => state.posts);
 
   return(
-      <>
-        <Container fluid className='canvas'>
-          <Row>
-
-            <Col>
-              <h1>Guidelines for detection</h1>
-              <div className='board'>
-                <p>
-                  If you are researchers working on this topic, you could directly go to the 
-                  contact page. There you could find the form by which you can 
-                </p>
-              </div>
-            </Col>
-
-            <Col className="form">
-              <Form className="formCard" />
-            </Col>
-
-          </Row>
-          <Row>
-              <Col className="notice-board">
-                
-              </Col>
-            </Row>
-        </Container>
-        
-        
-            
-              
-                
-            
-          
-          
-            
-          
-    
-        
-        
-        
-        
-      </>
+    <div>
+      <h1 className='detection-title'>Public Evidence</h1>
+      <PostList posts={posts} isLoading={isLoading} />
+    </div>
+      
     )
 };
 
