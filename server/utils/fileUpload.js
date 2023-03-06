@@ -26,7 +26,6 @@ function fileFilter (req, file, cb) {
         // To reject this file pass `false`, like so:
         cb(null, false);
     }
-
 }
 
 //file size format

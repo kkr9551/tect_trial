@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Slider.css';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from 'react-icons/ai';
 import { SliderData } from './Slider-data';
+import { Link } from 'react-router-dom';
 
 const Slider = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -11,7 +12,7 @@ const Slider = () => {
 
     const autoScroll = false;
     let slideInterval;
-    let intervalTime = 7000;
+    let intervalTime = 10000;
 
     const nextSlide = () => {
         setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1);
@@ -35,7 +36,8 @@ const Slider = () => {
         }
         return () => clearInterval(slideInterval);
     }, [currentSlide])
-    
+    //
+
 
     return (
         <div classname="AboutUs-slider">
@@ -54,7 +56,10 @@ const Slider = () => {
                                         <h2>{slide.heading}</h2>
                                         <p>{slide.desc}</p>
                                         <hr />
-                                        <button className='contentBtn'>Get Started</button>
+                                        {index === 3 && (
+                                            <Link className='contentBtn' to='/booklist'>Get Started</Link>
+                                        )}
+                                        
                                     </div>
                                 </>
                             )}

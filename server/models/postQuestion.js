@@ -8,7 +8,7 @@ const questionSchema = mongoose.Schema(
             ref: "User",
         },
         bookname: {
-            type: string,
+            type: String,
             required: [true, "If you cannot remember clearly the name of the original, you could input the translation name"],
             trim: true
         },
@@ -17,9 +17,17 @@ const questionSchema = mongoose.Schema(
             required: [true, "Please detail your question"],
             trim: true,
         },
-        marks: {
-            type: ObjectId,
-            ref: "User"
+        marks: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "MarkNumQ",
+        }],
+        appreciations: [{
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "ThankNumQ",
+        }],
+        image: {
+            type: Object,
+            default: {},
         },
     },
     {

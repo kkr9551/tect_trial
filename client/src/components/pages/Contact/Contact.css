@@ -1,0 +1,67 @@
+.peopleContainer {
+    width: 100%;
+    margin: auto;
+}
+
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    position: relative;
+    top: 200px;
+    
+}
+
+.contactTitle {
+    font-size: 50px;
+    line-height: 60px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contactDesc {
+    font-size: 20px;
+}
+
+a {
+    color: #DED4D4;
+    font-size: 20px;
+}
+
+.peopleCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.peopleCard {
+    flex: 0 0 calc(30.33% - 20px);
+    max-width: calc(30.33% - 20px);
+    width: 100%;
+    border-radius: 10px;
+    background-color: brown;
+    border: solid 3px #DED4D4;
+    text-align: center;
+    transition: .3s;
+    margin: 8px auto 8px;
+}
+
+.peopleImage {
+    width: 200px;
+    height: 16rem;
+    object-fit: cover;
+    margin: 8px auto 5px;
+}
+
+
+.researcherName {
+    font-size: 20px;
+    text-align: center;
+}
+
+.contactAddr {
+    font-size: 18px;
+    text-align: center;
+    font-weight: normal;
+}

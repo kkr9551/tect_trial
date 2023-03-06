@@ -3,7 +3,7 @@ import Homepage from './components/pages/Homepage/Homepage';
 import About from './components/pages/About/About';
 import Booklist from './components/pages/Booklist/Booklist';
 import Detection from './components/pages/Detection/Detection';
-import Contact from './components/pages/Contact';
+import Contact from './components/pages/Contact/Contact';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 //import { Navigate } from 'react-router-dom';
 //import Navigation from './components/Widgets/Navbar/Navbar';
