@@ -1,0 +1,34 @@
+.answer {
+    width: 48%;
+    background-color: #EFE6E6;
+    border: 3px solid #0094DA;
+    min-height: 70px;
+    cursor: pointer;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+.answer:hover {
+    border: 3px solid orange;
+}
+
+.answer-text {
+    font-weight: 600;
+    color: #2D2929;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.correct-answer {
+    border: 3px solid #1EA55B;
+}
+
+.wrong-answer {
+    border: 3px solid #DC0A0A;
+}
+
+.disabled-answer {
+    pointer-events: none;
+}

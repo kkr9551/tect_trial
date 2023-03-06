@@ -109,18 +109,18 @@ hr {
     font-weight: 400;
     padding: 6px 8px;
     margin: 0 5px 0 0;
-    border: 1px solid #2D2929;
-    border-radius: 8px;
+    /*border: 1px solid #2D2929;
+    border-radius: 8px;*/
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.3s;
-    background-color: blue;
+    /*background-color: blue;*/
 }
 
 .contentBtn:hover {
     transform: translateY(-2px);
-    background-color: green;
-    border: 1px solid #DAD4D4;
+    /*background-color: green;
+    border: 1px solid #DAD4D4;*/
 }

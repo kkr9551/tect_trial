@@ -38,7 +38,7 @@ const postSchema = mongoose.Schema(
         },
         marks: [{
             type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
+            ref: "MarkNum",
         }],
         questions: {
             type: Number,
@@ -46,7 +46,7 @@ const postSchema = mongoose.Schema(
         },
         appreciations: [{
             type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
+            ref: "ThankNum",
         }],
     },
     /**options: configurable options which can be passed to the constructor or the set method */
