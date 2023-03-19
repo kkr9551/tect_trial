@@ -87,7 +87,7 @@ const Register = () => {
 
     return (
         <div className='registerContainer'>
-            <h1>Welcome to TECT</h1>
+            <h1 className='register-title'>Welcome to TECT</h1>
             {isLoading && (<Loader />)}
                     <form onSubmit={register} className='registerForm'>
                         <div className="form-box">

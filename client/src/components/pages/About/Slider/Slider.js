@@ -12,7 +12,7 @@ const Slider = () => {
 
     const autoScroll = false;
     let slideInterval;
-    let intervalTime = 10000;
+    let intervalTime = 20000;
 
     const nextSlide = () => {
         setCurrentSlide(currentSlide === slideLength - 1 ? 0 : currentSlide + 1);
@@ -53,8 +53,8 @@ const Slider = () => {
                                 <>
                                     <img src={slide.image} alt="slide" />
                                     <div className='slide-content'>
-                                        <h2>{slide.heading}</h2>
-                                        <p>{slide.desc}</p>
+                                        <h2 className='sHeading'>{slide.heading}</h2>
+                                        <p className='sDesc'>{slide.desc}</p>
                                         <hr />
                                         {index === 3 && (
                                             <Link className='contentBtn' to='/booklist'>Get Started</Link>

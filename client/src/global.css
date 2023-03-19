@@ -40,12 +40,15 @@
 .--pad {
     max-width: 100%;
     margin: 0 auto;
+    right: 0;
+    left: 230px;
     padding: 0; 
     z-index: 3;
 }
 
 .header {
     padding-top: 2rem;
+    
     position: fixed;
     background-color: #121212;
 }

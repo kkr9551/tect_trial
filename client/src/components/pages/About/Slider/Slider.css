@@ -124,3 +124,11 @@ hr {
     /*background-color: green;
     border: 1px solid #DAD4D4;*/
 }
+
+.sHeading {
+    font-size: 25px;
+}
+
+.sDesc {
+    font-size: 18px;
+}

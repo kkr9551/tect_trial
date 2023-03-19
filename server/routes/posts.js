@@ -1,7 +1,7 @@
 import express from "express";
 import { 
     createPost, getPosts, getPost, deletePost, updatePost, getPublicPosts, getPublicStatus, getPublicPost, 
-    markPost, thankPost, getShallowCopies 
+    markPost, thankPost, nonthankPost, getShallowCopies 
 } from '../controllers/posts.js';
 import { protect } from "../middleware/auth.js";
 import { upload } from "../utils/fileUpload.js";
@@ -28,7 +28,8 @@ router.get("/visibility/marks", protect, getShallowCopies);
 router.delete("/:id", protect, deletePost);
 router.patch("/:id", protect, upload.single("image"), updatePost);
 router.post("/:id/marked", protect, markPost);
-router.post("/:id/appreciated", protect, thankPost);
+router.put("/:id/thank", protect, thankPost);
+router.put("/:id/nonthank", protect, nonthankPost);
 
 //for post questions, users can
 /**

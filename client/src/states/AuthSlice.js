@@ -6,17 +6,19 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const name = JSON.parse(localStorage.getItem("name"));
 
+
 const initialState = {
     isLoggedIn: false,
     name: name ? name : "", //the name of state will be saved in the local storage
     user: {
+        _id: "",
         name: "",
         email: "",
         picturePath: "",
         cases: 0,
         selfIntro: "I am ..."
     },
-    userID: "",
+    
 };
 
 export const authSlice = createSlice({
@@ -41,6 +43,7 @@ export const authSlice = createSlice({
             localStorage.setItem("name", JSON.stringify(action.payload));
             state.name = action.payload
         },
+        
     }
 });
 
@@ -48,4 +51,5 @@ export const { setLogin, setUser, setName } = authSlice.actions;
 export const selectIsLoggedIn = (state) => state.auth.isLoggedIn;
 export const selectUser = (state) => state.auth.user;
 export const selectName = (state) => state.auth.name;
+
 export default authSlice.reducer;

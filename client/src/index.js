@@ -18,6 +18,7 @@ import { configureStore } from "@reduxjs/toolkit";
 } from "redux-persist";*/
 import authReducer from "./states/AuthSlice";
 import postsReducer from "./states/PostsSlice";
+import questionReducer from "./states/QuestionsSlice";
 import filterReducer from "./states/FilterSlice";
 //import { PersistGate } from "redux-persist/integration/react";
 //import storage from "redux-persist/lib/storage";
@@ -30,7 +31,8 @@ export const store = configureStore(
         reducer: {
             auth: authReducer, 
             posts: postsReducer, 
-            filter: filterReducer
+            filter: filterReducer,
+            questions: questionReducer
         },
         /*middleware: (getDefaultMiddleware) => getDefaultMiddleware({
             serializableCheck: {

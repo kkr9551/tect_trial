@@ -15,10 +15,10 @@ const data = [
         question: "Ernest Hemmingway, For Whom the Bell Tolls",
         incorrectAnswers: [
             "Danger",
-            "Reformable",
+            "Safe",
             "Fugitive",
         ],
-        correctAnswer: "Safe"
+        correctAnswer: "Reformable"
     },
 
     {
@@ -35,6 +35,16 @@ const data = [
         question: "Beecher Stowe, Uncle Tom's Cabin",
         incorrectAnswers: [
             "Danger",
+            "Safe",
+            "Fugitive",
+        ],
+        correctAnswer: "Reformable"
+    },
+
+    {
+        question: "Maxim Gorky, My Childhood",
+        incorrectAnswers: [
+            "Danger",
             "Reformable",
             "Fugitive",
         ],
@@ -42,27 +52,17 @@ const data = [
     },
 
     {
-        question: "Mikhail Bulgakov, Master and Margarita",
+        question: "Joseph Stalin, 'Marxism and Probelms of Linguistics' in 1957",
         incorrectAnswers: [
-            "Danger",
+            "Reformable",
             "Safe",
             "Fugitive",
         ],
-        correctAnswer: "Reformable"
+        correctAnswer: "Danger"
     },
 
     {
-        question: "J.D. Salinger, The Catcher in the Rye",
-        incorrectAnswers: [
-            "Danger",
-            "Safe",
-            "Fugitive",
-        ],
-        correctAnswer: "Reformable"
-    },
-
-    {
-        question: "Hans Christian Andersen, Fairy Tales by Hans Christian Andersen",
+        question: "Aleksandr S. Pushkin, Evgeny Onegin",
         incorrectAnswers: [
             "Danger",
             "Reformable",

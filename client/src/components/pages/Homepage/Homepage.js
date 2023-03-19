@@ -18,6 +18,10 @@ const Homepage = () => {
           <Slider slides={slides} />
         </div>*/}
         <div className="container-game">
+          <p className="introduction">Censorship manipulations during the occupation of the USSR</p>
+          <br/>
+          <p className="introduction">still remains in present published translations.</p>
+          
           <Cardgame />
         </div>
         <div className="push"></div>

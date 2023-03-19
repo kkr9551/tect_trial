@@ -7,7 +7,7 @@ import { fileSizeFormatter } from "../utils/fileUpload.js";
 //import { v2 as cloudinary } from 'cloudinary';
 import cloudinary from "../utils/cloudinary.js";
 import MarkNum from "../models/markPost.js";
-import ThankNum from "../models/thankPost.js";
+//import ThankNum from "../models/thankPost.js";
 import mongoose from "mongoose";
 
 /**create a post */
@@ -289,13 +289,22 @@ export const thankPost = asyncHandler(async (req, res) => {
         throw new Error({message: "Invalid post id", data: {}});
     }
 
-    const post = await PostMessage.findById({id: post_id});
+    const post = await PostMessage.findById({_id: post_id});
     if (!post) {
         res.status(404);
         throw new Error({message: "Post not found"});
     } else {
         let current_user = req.user;
-        const postThank = await ThankNum.findOne(
+        try {
+            await PostMessage.findByIdAndUpdate(
+                post_id, {$push: {appreciations: current_user._id}}, {new: true}
+            );
+            res.status(200).json({success: true, message: "Appreciation successfully added", data: {}});
+        } catch (error) {
+            res.status(400).json(error.message);
+        }
+        
+        /*const postThank = await ThankNum.findOne(
             {
                 post_id: post_id,
                 user_id: current_user._id
@@ -329,23 +338,31 @@ export const thankPost = asyncHandler(async (req, res) => {
             }
         } catch (error) {
             res.status(400).json(error.message);
-        }
+        }*/
     }
 });
 
-/*export const likePost = async(req, res) => {
-    const {id} = req.params;
-    if(!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).send("No post with that id. ");
-    } else {
-        const post = await PostMessage.findById(id);
-        const updatedPost = await PostMessage.findByIdAndUpdate(id, {likeCount: post.likeCount + 1}, {new: true});
-        res.json(updatedPost);
+/**cancell appreciation */
+export const nonthankPost = asyncHandler(async (req, res) => {
+    let post_id = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(post_id)) {
+        res.status(400);
+        throw new Error({message: "Invalid post id", data: {}});
     }
-};*/
 
-/**
- * bring a suit: if users are readers of the original, they can post content they suspect to be cut in the translation; Translation users can check posted suits and decided where to find evidence of censorship manipulation
- * how to match suit and evdience? By keyword?
- */
-
+    const post = await PostMessage.findById({_id: post_id});
+    if (!post) {
+        res.status(404);
+        throw new Error({message: "Post not found"});
+    } else {
+        let current_user = req.user;
+        try {
+            await PostMessage.findByIdAndUpdate(
+                post_id, {$pull: {appreciations: current_user._id}}, {new: true}
+            );
+            res.status(200).json({success: true, message: "Appreciation removed", data: {}});
+        } catch (error) {
+            res.status(400).json(error.message);
+        }
+    }
+});

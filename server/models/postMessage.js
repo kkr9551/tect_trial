@@ -46,7 +46,7 @@ const postSchema = mongoose.Schema(
         },
         appreciations: [{
             type: mongoose.Schema.Types.ObjectId,
-            ref: "ThankNum",
+            ref: "User",
         }],
     },
     /**options: configurable options which can be passed to the constructor or the set method */

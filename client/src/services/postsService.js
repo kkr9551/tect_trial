@@ -55,6 +55,26 @@ const getPublicPost = async (id) => {
     return response.data;
 }
 
+/**add a mark */
+const markPost = async (id) => {
+    const response = await axios.post(`${API_URL}${id}/marked`);
+    return response.data;
+};
+
+/**thank a post */
+const thankPost = async (id) => {
+    const response = await axios.put(`${API_URL}${id}/thank`);
+    console.log(response.data);
+    return response.data;
+};
+
+/**cancel thank */
+const nonthankPost = async (id) => {
+    const response = await axios.put(`${API_URL}${id}/nonthank`);
+    console.log(response.data);
+    return response.data;
+}
+
 /**when we want to process the async func createPost, we need this exported postService */
 const postsService = {
     createPost,
@@ -65,6 +85,9 @@ const postsService = {
     getAllPublicPosts,
     getVisibilityStatus,
     getPublicPost,
+    markPost,
+    thankPost,
+    nonthankPost,
 };
 
 export default postsService;
