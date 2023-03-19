@@ -15,6 +15,7 @@ import Login from "./components/pages/Auth/Login/Login";
 import Dashboard from "./components/pages/Profile/Dashboard";
 import EditProfile from "./components/pages/Profile/EditProfile/EditProfile";
 import AddPost from './components/pages/Profile/AddPost';
+import AddQuestion from './components/pages/Profile/AddQuestion';
 import { getLoginStatus } from './services/authServices';
 import { setLogin } from './states/AuthSlice';
 import Sidebar from './components/pages/Profile/Sidebar/Sidebar';
@@ -26,8 +27,10 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from 'react-toastify';
 import Layout from './components/Widgets/Layout';
 import PostDetails from './components/pages/Profile/Post/PostDetails/PostDetails';
+import QuestionDetails from './components/pages/Profile/Question/QuestionDetails/QuestionDetails';
 import PublicPostDetails from './components/pages/Profile/Post/PostDetails/PublicPostDetails/PublicPostDetails';
 import EditPost from './components/pages/Profile/EditPost';
+import MyQuestion from './components/pages/Profile/MyQuestion';
 //import { selectIsLoggedIn } from './states/AuthSlice';
 
 axios.defaults.withCredentials = true;
@@ -119,12 +122,39 @@ const App = () => {
                                     </LayoutForD>
                                 </Sidebar>
                             } />
+                        <Route 
+                            path='/add-question'
+                            element={
+                                <Sidebar>
+                                    <LayoutForD>
+                                        <AddQuestion />
+                                    </LayoutForD>
+                                </Sidebar>
+                            } />
+                        <Route 
+                            path='/my-question'
+                            element={
+                                <Sidebar>
+                                    <LayoutForD>
+                                        <MyQuestion />
+                                    </LayoutForD>
+                                </Sidebar>
+                            } />
                         <Route
                             path='/post-details/:id' 
                             element={
                                 <Sidebar>
                                     <LayoutForD>
                                         <PostDetails />
+                                    </LayoutForD>
+                                </Sidebar>
+                            } />
+                        <Route
+                            path='/question-details/:id' 
+                            element={
+                                <Sidebar>
+                                    <LayoutForD>
+                                        <QuestionDetails />
                                     </LayoutForD>
                                 </Sidebar>
                             } />

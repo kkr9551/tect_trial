@@ -5,7 +5,8 @@ import People from './People';
 
 const Contact = () => {
   const people = peopleData.map((people) => (
-    <People 
+    <People
+      key={people.id} 
       name={people.name} 
       url={people.image} 
       eAddr={people.email} />
@@ -20,6 +21,9 @@ const Contact = () => {
         <div className='peopleContainer'>
           
           <div className='peopleCards'>{people}</div>
+        </div>
+        <div className='contactTech'>
+          <p className='issueDesc'>If you meet any technical trouble, please fill in this <a className='contactLink' href='https://docs.google.com/forms/d/e/1FAIpQLSfnjejt68eCsEPMfvOVgVDX0jsHHLW07_GkRwPss_TzGAwU8Q/viewform?usp=sf_link' target="_blank">form</a>. We will address it as quickly as possible.</p>
         </div>
       </section>
     </div>

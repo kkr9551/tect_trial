@@ -38,7 +38,7 @@ const PostDetails = () => {
 
     return (
         <div className='postDetails'>
-            <h3 className='--mt'>Evidence Detail</h3>
+            <h3 className='PDtitle'>Evidence Detail</h3>
             <Card cardClass="detailCard">
                 {isLoading && <SpinnerImg />}
                 {post && (
@@ -46,7 +46,7 @@ const PostDetails = () => {
                         <Card cardClass="group">
                             {post?.image ? 
                                 (<img src={post.image.filePath} alt={post.image.fileName} />) : 
-                                (<p>No image set for this post</p>)
+                                (<p className='nonPostAlert'>No image set for this post</p>)
                             }
                         </Card>
                         <hr/>

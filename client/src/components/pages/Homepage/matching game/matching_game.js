@@ -2,25 +2,25 @@ import React, {useState, useEffect} from "react";
 import SingleCard from "./SingleCard/SingleCard";
 import "./matching_game.css";
 import {Grow} from "@mui/material"
-
+import { Link } from 'react-router-dom';
 
 
 const cardImage = [
-    {"src": '/img/card1.png', matched: false, alt: 'language'}, 
-    {"src": '/img/card3.png', matched: false, alt: 'estrangement'}, 
-    {"src": '/img/card5.png', matched: false, alt: 'shape_ideo'},
-    {"src": '/img/card7.png', matched: false, alt: 'ideo'}, 
-    {"src": '/img/card9.png', matched: false, alt: 'anachronism'}, 
-    {"src": '/img/card11.png', matched: false, alt: 'subtle'}, 
+    {"src": '/img/card1-matching-game.png', matched: false, alt: 'the_original'}, 
+    {"src": '/img/card3-matching-game.png', matched: false, alt: 'russian_translation'}, 
+    {"src": '/img/card5-matching-game.png', matched: false, alt: 'religion'},
+    {"src": '/img/card7-matching-game.png', matched: false, alt: 'impeccable'}, 
+    {"src": '/img/card9-matching-game.png', matched: false, alt: 'ideological_opposition'}, 
+    {"src": '/img/card11-matching-game.png', matched: false, alt: 'ideals'}, 
 ];
 
 const cardImage_2 = [
-    {"src": '/img/card2.png', matched: false, alt: 'language'},
-    {"src": '/img/card4.png', matched: false, alt: 'estrangement'},
-    {"src": '/img/card6.png', matched: false, alt: 'shape_ideo'},
-    {"src": '/img/card8.png', matched: false, alt: 'ideo'},
-    {"src": '/img/card10.png', matched: false, alt: 'anachronism'},
-    {"src": '/img/card12.png', matched: false, alt: 'subtle'},
+    {"src": '/img/card2-matching-game.png', matched: false, alt: 'the_original'},
+    {"src": '/img/card4-matching-game.png', matched: false, alt: 'russian_translation'},
+    {"src": '/img/card6-matching-game.png', matched: false, alt: 'religion'},
+    {"src": '/img/card8-matching-game.png', matched: false, alt: 'impeccable'},
+    {"src": '/img/card10-matching-game.png', matched: false, alt: 'ideological_opposition'},
+    {"src": '/img/card12-matching-game.png', matched: false, alt: 'ideals'},
 ];
 
 /*const storyBoard = [
@@ -93,25 +93,25 @@ const Cardgame = () => {
                         }
                     }); 
                 });
-                if (choiceOne.alt === "language") {
-                    setUnlockS5(true);
-                } else if (choiceOne.alt === "estrangement") {
+                if (choiceOne.alt === "the_original") {
                     setUnlockS1(true);
-                } else if (choiceOne.alt === "shape_ideo") {
+                } else if (choiceOne.alt === "russian_translation") {
                     setUnlockS2(true);
-                } else if (choiceOne.alt === "ideo") {
+                } else if (choiceOne.alt === "religion") {
                     setUnlockS3(true);
-                } else if (choiceOne.alt === "subtle") {
-                    setUnlockS6(true);
-                } else if (choiceOne.alt === "anachronism") {
+                } else if (choiceOne.alt === "impeccable") {
                     setUnlockS4(true);
+                } else if (choiceOne.alt === "ideals") {
+                    setUnlockS5(true);
+                } else if (choiceOne.alt === "ideological_opposition") {
+                    setUnlockS6(true);
                 }
                 resetTurn();
                 countPairs();
             } else {
                 setTimeout(() => {
                     resetTurn();
-                }, 1000);
+                }, 5000);
             }
         }
     }, [choiceOne, choiceTwo]);
@@ -129,11 +129,12 @@ const Cardgame = () => {
     return(
         <>
             <div className="matching_game">
-                <div className="matching_game-title">
-                    <h1>Play a game, discover typical manipulation</h1>
+                <div classname="matching_desc">
+                    <h1 className="matching_game-title">Play a game, discover typical manipulation</h1>
                     <p className="sub-title-game">
                     Stories behind white papers
                     </p>
+                    <p className="sub-title-game">After each flip, you have around five seconds to read the card</p>
                 </div>
                 
                 <button className="shuffle_btn" onClick={shuffleCards}>
@@ -146,6 +147,8 @@ const Cardgame = () => {
                                             card={card}
                                             handleChoice={handleChoice}
                                             flipped={card === choiceOne || card === choiceTwo || card.matched}
+                                            //if two cards matached, they won't be flipped to backside; if not matched, they would flip backside.
+                                            //if clicking one card, you can flip it to frontside
                                             disabled={disabled} 
                                         />))
                     }
@@ -165,8 +168,10 @@ const Cardgame = () => {
                             {/*<img src={storyBoard[0].src} alt="story1" />*/}
                             <div className="storyContent">
                                 <h3>The 1st Story</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque mi sed elit maximus, et malesuada neque ultricies. Pellentesque sit amet efficitur metus, interdum aliquam arcu. Etiam varius erat sapien, sit amet placerat augue efficitur vel. Curabitur in neque molestie, sodales elit ac, tincidunt ante. Nullam et nulla elementum, venenatis dui quis, aliquet risus. Pellentesque lacus lacus, maximus ut mauris in, volutpat congue dui. Donec facilisis justo eu lectus congue, fermentum faucibus magna vehicula.</p>
-                                <button className="lmBtn">Learn more</button>
+                                <p className="storyText">Estonian translators in Soviet Estonia could translate literature, referring to the original. Retaining the original text that was neither ideologically dangerous nor sensitive is a strategy to negate nagetive influences from strict censorship. For instance, Semper translated Pablo Neruda's poems directly from the original. But he still faced attack after the translation was published. What happened on earth?</p>
+                                
+                                <img className="illustration_1" src="https://www.digar.ee/arhiiv/covers/9/4/2/195249/full.jpg" alt="NerudaTranslation" />
+                                
                             </div>
                         </>)}
                         {unlockS2 && (
@@ -174,8 +179,8 @@ const Cardgame = () => {
                             {/*<img src={storyBoard[1].src} alt="story2" />*/}
                             <div className="storyContent">
                                 <h3>The 2nd Story</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque mi sed elit maximus, et malesuada neque ultricies. Pellentesque sit amet efficitur metus, interdum aliquam arcu. Etiam varius erat sapien, sit amet placerat augue efficitur vel. Curabitur in neque molestie, sodales elit ac, tincidunt ante. Nullam et nulla elementum, venenatis dui quis, aliquet risus. Pellentesque lacus lacus, maximus ut mauris in, volutpat congue dui. Donec facilisis justo eu lectus congue, fermentum faucibus magna vehicula.</p>
-                                <button className="lmBtn">Learn more</button>
+                                <p className="storyText">Semper &#40;image below&#41; received censure from the State Publishing House because he unsettled the assumption: Neruda is pro-communism, and thus translating his work into Russian and referring to the Russian translation were the optimum. This manufactured narration was vulnerable to Semper's work which was under suspicion of dedication to the Western world outside USSR. Any sign of turning direction is likely to mar the imagination that "we are one".</p>
+                                <img className="illustration_2" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReBhoxnDS-EV03gPhIXFEZQ9ViExzdfPK9IQ&usqp=CAU" alt="Semper" />
                             </div>
                         </>)}
                         {unlockS3 && (
@@ -183,8 +188,8 @@ const Cardgame = () => {
                             {/*<img src={storyBoard[2].src} alt="story3" />*/}
                             <div className="storyContent">
                                 <h3>The 3rd Story</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque mi sed elit maximus, et malesuada neque ultricies. Pellentesque sit amet efficitur metus, interdum aliquam arcu. Etiam varius erat sapien, sit amet placerat augue efficitur vel. Curabitur in neque molestie, sodales elit ac, tincidunt ante. Nullam et nulla elementum, venenatis dui quis, aliquet risus. Pellentesque lacus lacus, maximus ut mauris in, volutpat congue dui. Donec facilisis justo eu lectus congue, fermentum faucibus magna vehicula.</p>
-                                <button className="lmBtn">Learn more</button>
+                                <p className="storyText">In translating children's literature which should be far less ideologically dangerous, tranlators still had to winnow text that contradicts communist culture. One target is religion-related content. For instance, words like "God" and "Paradise". In translating Rodari's "The Adventures of Cipollino, Kurtna referred to the Russian translation, omitting religion-related text. Religion censorship was prevalent in communist countries.</p>
+                                <img className="illustration_3" src="https://vaimuvara.ee/wp-content/uploads/2020/05/Gianni-Rodari-Cipollino-seiklused.jpg" alt="onionAdventure" />
                             </div>
                         </>)}
                         {unlockS4 && (
@@ -192,24 +197,24 @@ const Cardgame = () => {
                             {/*<img src={storyBoard[3].src} alt="story4" />*/}
                             <div className="storyContent">
                                 <h3>The 4th Story</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque mi sed elit maximus, et malesuada neque ultricies. Pellentesque sit amet efficitur metus, interdum aliquam arcu. Etiam varius erat sapien, sit amet placerat augue efficitur vel. Curabitur in neque molestie, sodales elit ac, tincidunt ante. Nullam et nulla elementum, venenatis dui quis, aliquet risus. Pellentesque lacus lacus, maximus ut mauris in, volutpat congue dui. Donec facilisis justo eu lectus congue, fermentum faucibus magna vehicula.</p>
-                                <button className="lmBtn">Learn more</button>
+                                <p className="storyText">Another standard that translators had to follow was to remove or rewrite text suspected to tarnish the representation of Russians and communists. Despite being popular in the USSR and other Eastern Pact countries, Hemingway's works suffered rewriting. For instance, in "For Whom the Bell Tolls", the character's recollection of Karkov &#40;the well-connected Russian correspondent&#41;'s bad teeth and the plot of Karkov living with wife and mistress could never remain. The <a target="_blank" rel="noreferrer" href="https://en.wikipedia.org/wiki/General_Directorate_for_the_Protection_of_State_Secrets_in_the_Press">Glavlit</a> weighed heavily on any subtle change that might preclude generating correct Russian characters.</p>
+                                <img className="illustration_4" src="https://static.dw.com/image/19386329_804.jpg" alt="hemingway" />
                             </div>
                         </>)}
                         {unlockS5 && (
                         <>
                             <div className="storyContent">
                                 <h3>The 5th Story</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque mi sed elit maximus, et malesuada neque ultricies. Pellentesque sit amet efficitur metus, interdum aliquam arcu. Etiam varius erat sapien, sit amet placerat augue efficitur vel. Curabitur in neque molestie, sodales elit ac, tincidunt ante. Nullam et nulla elementum, venenatis dui quis, aliquet risus. Pellentesque lacus lacus, maximus ut mauris in, volutpat congue dui. Donec facilisis justo eu lectus congue, fermentum faucibus magna vehicula.</p>
-                                <button className="lmBtn">Learn more</button>
+                                <p className="storyText">Rewriting also serves to reinforce the ideal of communism and make it self-evident. "Our common cause", this word is the usual worn-out cliché in the Russian press. The case study "Hemingway's Transformations in Soviet Union" points out that "our common cause" or "the common cause" suggests no need to explain what is that cause and why it is good. This case reveals that censorship manipulation means not only omitting text the communist authority will never expect to see but also rewriting and re-producing new text. Rewriting can pass deleted text in an obscure manner or strengthen the ideology.</p>
+                                <img className="illustration_5" src="https://osta.img-bcg.eu/item/13/5581/29005581.jpg" alt="hemingwaytranslation" />
                             </div>
                         </>)}
                         {unlockS6 && (
                         <>
                             <div className="storyContent">
                                 <h3>The 6th Story</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque mi sed elit maximus, et malesuada neque ultricies. Pellentesque sit amet efficitur metus, interdum aliquam arcu. Etiam varius erat sapien, sit amet placerat augue efficitur vel. Curabitur in neque molestie, sodales elit ac, tincidunt ante. Nullam et nulla elementum, venenatis dui quis, aliquet risus. Pellentesque lacus lacus, maximus ut mauris in, volutpat congue dui. Donec facilisis justo eu lectus congue, fermentum faucibus magna vehicula.</p>
-                                <button className="lmBtn">Learn more</button>
+                                <p className="storyText">Another feature of censorship manipulation was to enforce the ideological opposition. Not only can it be as complicated as the conflict between communist countries and the Western world, but also the daily opposition between right and wrong. Let's go back to the Estonian translation of "The Adventures of Cipollino". There is no modifier before "Prince Lemon" in the original; in the Russian translation, negative adjectives "arrogant, cruel, but cowardly" were added. This strategy forms the stark contrast between good and bad characters, thus strengthening the ideological struggle.</p>
+                                <img className="illustration_6" src="http://media.voog.com/0000/0040/2501/photos/Aleksander%20Kurtna.jpg" alt="kurtna" />
                             </div>
                         </>)}
                     </div>
@@ -218,10 +223,12 @@ const Cardgame = () => {
                     <div className="container_d">{
                         pairs === 6 && (
                             <>
-                                <p>
-                                    If you would like to delve into stories behind these white papers, we recommend reading Prof. Monticelli's research papers and relative book chapters
+                                <p className="textGuide">
+                                    If you want to know more about censorship manipulations, let's play a role of the editor in the Glavlit. 
+                                    <br />
+                                    <Link className="linkToBL" to="/booklist">Let's go</Link>
                                 </p>
-                                <button>Learn more</button>
+                                
                             </>
                         )
                     }

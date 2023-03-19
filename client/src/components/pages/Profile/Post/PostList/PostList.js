@@ -104,8 +104,7 @@ const PostList = ({posts, isLoading}) => {
                                     <th>No.</th>
                                     <th>Title</th>
                                     <th>Tags</th>
-                                    <th>Marks</th>
-                                    <th>Appreciations</th>
+                                    
                                     <th>Visibility</th>
                                     <th>Action</th>
                                 </tr>
@@ -113,14 +112,13 @@ const PostList = ({posts, isLoading}) => {
                             <tbody>
                                 {
                                     currentItems.map((post, index) => {
-                                        const {_id, title, tags, marks, appreciations, visibility} = post;
+                                        const {_id, title, tags, visibility} = post;
                                         return(
                                             <tr key={_id}>
                                                 <td>{index + 1}</td>
                                                 <td>{trimmedText(title, 10)}</td>
                                                 <td>{tags}</td>
-                                                <td>{marks}</td>
-                                                <td>{appreciations}</td>
+                                                
                                                 <td>{visibility}</td>
                                                 <td className="list-icons">
                                                     <span>

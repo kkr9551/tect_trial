@@ -133,3 +133,9 @@ export const updatePostQuestion = asyncHandler(async (req, res, next) => {
     );
     res.status(200).json(updatedQuestion);
 });
+
+/**get all questions regarding questions' owners */
+export const getTotalQuestions = asyncHandler(async (req, res) => {
+    const totalQuestions = await PostQuestion.find({}).sort("-createdAt");
+    res.status(200).json(totalQuestions);
+});

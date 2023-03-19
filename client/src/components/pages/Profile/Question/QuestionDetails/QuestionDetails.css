@@ -1,0 +1,12 @@
+.questionDetails {
+    margin-bottom: 5rem;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    top: 200px;
+    /*left: 200px;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

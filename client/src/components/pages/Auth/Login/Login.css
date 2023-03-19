@@ -8,7 +8,7 @@
     border-radius: 5%;
 }
 
-.loginContainer h1 {
+.loginContainer .logIn-title {
     position: relative;
     left: 220px;
     right: 120px;
@@ -136,11 +136,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    
+}
+
+.linkRestPw {
     font-size: 14px;
     font-weight: bold;
     color: #2D2929;
 }
 
+.linkRestPw:hover {
+    color: red;
+}
 
 
 

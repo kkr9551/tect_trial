@@ -72,7 +72,7 @@ const Login = () => {
 
     return(
         <div className="loginContainer">
-            <h1>Welcome to TECT</h1>
+            <h1 className='logIn-title'>Welcome to TECT</h1>
             {isLoading && (<Loader />)}
                 <form className='loginForm' onSubmit={login}>
                     <div className="loginform-box">
@@ -110,7 +110,7 @@ const Login = () => {
                             <Link to='/register' className='linkTR'>Register now</Link>
                         </div>
                         <div className='resetpw'>
-                            <Link to="/reset">Forgot your password?</Link>
+                            <Link to="/reset" className="linkRestPw">Forgot your password?</Link>
                         </div>
                         
                     </div>

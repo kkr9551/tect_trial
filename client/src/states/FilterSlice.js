@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    filteredPosts: []
+    filteredPosts: [],
+    filteredQuestions: []
 };
 
 const filterSlice = createSlice({
@@ -16,9 +17,18 @@ const filterSlice = createSlice({
             );
             state.filteredPosts = tempPosts;
         },
+        filterQuestions: (state, action) => {
+            const {questions, search} = action.payload;
+            const tempQuestions = questions.filter(
+                (question) => question.bookname.toLowerCase().includes(search.toLowerCase())
+            );
+            state.filteredQuestions = tempQuestions;
+        }
     },
 });
 
 export const {filterPosts} = filterSlice.actions;
+export const {filterQuestions} = filterSlice.actions;
 export const selectFilteredPosts = (state) => state.filter.filteredPosts;
+export const selectFilteredQuestions = (state) => state.filter.filteredQuestions;
 export default filterSlice.reducer;

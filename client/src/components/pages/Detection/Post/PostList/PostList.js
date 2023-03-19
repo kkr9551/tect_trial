@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import "./PostList.css";
+//import "./PostList.css";
 //import UseRedirectLoggedOutUser from '../../../../../custom hook/UseRedirectLoggedOutUser';
 import Loader from '../../../../Widgets/Loader/Loader';
 //if user is not logged in, user cannot click handshake, pindown two buttons but just view the evidence list and details
@@ -67,14 +67,14 @@ const PostList = ({posts, isLoading}) => {
                         !isLoading && posts.length === 0 ? (
                             <p>-- No public evidence is found</p>
                         ) : (
-                            <table>
+                            <table className='postListTb'>
                                 <thead>
                                     <tr>
                                         <th>No.</th>
+                                        
                                         <th>Title</th>
                                         <th>Tags</th>
-                                        <th>Marks</th>
-                                        <th>Appreciations</th>
+                                        
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -87,8 +87,7 @@ const PostList = ({posts, isLoading}) => {
                                                     <td>{index + 1}</td>
                                                     <td>{trimmedText(title, 10)}</td>
                                                     <td>{tags}</td>
-                                                    <td>{marks}</td>
-                                                    <td>{appreciations}</td>
+                                                    
                                                     <td className="list-icons">
                                                         <span>
                                                             <Link to={`/public-post-details/${_id}`}>
@@ -96,16 +95,13 @@ const PostList = ({posts, isLoading}) => {
                                                             </Link>
                                                         </span>
                                                         <span>
-                                                            <BsPinAngleFill 
-                                                                size={20} 
-                                                                color={"green"} 
-                                                                id="pin" />
+                                                            <BsPinAngleFill size={20} color={"green"} id="pin" />
+                                                            <span>{marks ?.length > 0 && (<span>{marks ?.length}</span>)}</span>
+                                                            
                                                         </span>
                                                         <span>
-                                                            <FaHandsHelping 
-                                                                size={20} 
-                                                                color={"orange"} 
-                                                                id="thank" />
+                                                            <FaHandsHelping size={20} color={"orange"} id="thank" />
+                                                            <span>{appreciations ?.length > 0 && (<span>{appreciations ?.length}</span>)}</span>
                                                         </span>
                                                     </td>
                                                 </tr>

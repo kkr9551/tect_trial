@@ -21,10 +21,10 @@ const questionSchema = mongoose.Schema(
             type: mongoose.Schema.Types.ObjectId,
             ref: "MarkNumQ",
         }],
-        appreciations: [{
+        /*appreciations: [{
             type: mongoose.Schema.Types.ObjectId,
             ref: "ThankNumQ",
-        }],
+        }],*/
         image: {
             type: Object,
             default: {},

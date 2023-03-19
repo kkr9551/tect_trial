@@ -1,0 +1,33 @@
+.questionList {
+    color: #2D2929;
+    width: 850px;
+    max-height: 850px;
+    position: absolute;
+    left: 380px;
+    top: 450px;
+    background-color: #DAD4D4;
+}
+
+.quesTable {
+    padding: 5px;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.listIcons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.listIcons > * {
+    margin-right: 7px;
+    cursor: pointer;
+    vertical-align: middle;
+    align-self: center;
+}
+
+#eye {
+    margin-top: 5px;
+}

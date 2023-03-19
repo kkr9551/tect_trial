@@ -12,7 +12,7 @@ const Booklist = () => {
 ];*/
     return(
         <>
-          <div className="container-slider">
+          <div className="quizGameContainer">
             {/*<Slider slides={slides} />*/}
             <QuizProvider>
               <Quiz />

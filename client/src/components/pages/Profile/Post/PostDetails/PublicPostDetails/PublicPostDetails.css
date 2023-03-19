@@ -9,6 +9,10 @@
     flex-flow: row wrap;
 }
 
+.publicPDTitle {
+    font-size: 50px;
+}
+
 .publicDetailsCard {
     width: 100%;
     max-width: 500px;
@@ -25,8 +29,12 @@
     padding: 5px;
 }
 
+.ppAlert {
+    color: #2D2929;
+}
+
 .public-badge {
-    background-color: var(--color-danger);
+    background-color: transparent;
     color: #2D2929;
     padding-left: 2px;
     padding-right: 2px;
@@ -39,4 +47,28 @@
 
 .p-h4-ppdetails {
     color: #2D2929;
+    font-size: 25px;
+}
+
+.publicEvidenceContent {
+    font-size: 18px;
+    color: #2D2929;
+}
+
+.actionBtnsGroup {
+    margin-top: 15px;
+
+}
+
+.actionButton {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.actionButton:hover {
+    border: none;
+    background-color: transparent;
+    transform: translateY(-2px); 
 }
